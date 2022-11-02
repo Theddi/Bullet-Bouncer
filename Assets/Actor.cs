@@ -57,11 +57,6 @@ public class Actor : MonoBehaviour
 
     void HandleRotation()
     {
-        if(rotation.sqrMagnitude > 0)
-        {
-        Debug.Log(rotation);
-        Debug.Log(rotation.sqrMagnitude );
-        }
         if(rotation.sqrMagnitude > 0.02)
         {
             angle = Vector2.Angle(Vector2.up, rotation);
