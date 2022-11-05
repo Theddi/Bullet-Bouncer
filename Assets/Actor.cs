@@ -11,7 +11,7 @@ public class Actor : MonoBehaviour
     PlayerControls controls;
     PlayerInput input;
     Vector2 face_direction = Vector2.up;
-
+    
     [SerializeField] Vector2 player_move = Vector2.zero;
     [SerializeField] Vector2 rotation = Vector2.zero;
     [SerializeField] float speed = 10.0f;
