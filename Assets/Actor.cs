@@ -16,6 +16,7 @@ public class Actor : MonoBehaviour
     [SerializeField] Vector2 rotation = Vector2.zero;
     [SerializeField] float speed = 10.0f;
     [SerializeField] float angle = 0f;
+    BulletPool bullet_pool;
 
     void Awake()
     {
@@ -35,6 +36,7 @@ public class Actor : MonoBehaviour
     void Start()
     {
         player_body = GetComponent<Rigidbody2D>();
+        bullet_pool = GameObject.Find("BulletPool").GetComponent<BulletPool>();
     }
 
     void Update()
@@ -48,6 +50,11 @@ public class Actor : MonoBehaviour
     {
         player_move = controls.Gameplay.Move.ReadValue<Vector2>();
         rotation = controls.Gameplay.Rotation.ReadValue<Vector2>();
+        if (controls.Gameplay.Shoot.IsPressed())
+        {
+            bullet_pool.Shoot(rotation, player_body.position);
+        }
+            
     }
 
     void HandleMovement()
