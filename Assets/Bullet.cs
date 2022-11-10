@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     static int id = 0;
     public int bullet_id;
     int maximum_bounces = 3;
-    float bullet_speed = 20f;
+    static float bullet_speed = 20f;
     [SerializeField] int bounces = 0;
 
     private void Start()
@@ -19,9 +19,8 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bullet_body.transform.eulerAngles = new Vector3(bullet_body.transform.eulerAngles.x, bullet_body.transform.eulerAngles.y, 0);
         if (bounces >= maximum_bounces)
-        {
+        {//On maximum bounces the bullet shall be removed
             bounces = 0;
             SendMessageUpwards("DeactivateBullet", bullet_id);
         }
@@ -30,9 +29,17 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.GetComponent<Bullet>() == null)
-        {
+        {//Collision with everything except another Bullet, increases Bounces
             ++bounces;
         }
-        bullet_body.velocity = Vector2.Reflect(bullet_body.velocity, collision.contacts[0].normal);
+        if (collision.gameObject.GetComponent<Wall>() != null)
+        {//Collision with a wall shall reflect the bullet accordingly
+            //bullet_body.velocity = Vector2.Reflect(bullet_body.velocity, collision.contacts[0].normal);
+        }
+    }
+
+    public void Shoot()
+    {//Set initial velocity of bullet when spawned
+        bullet_body.velocity = bullet_body.transform.up * bullet_speed;
     }
 }

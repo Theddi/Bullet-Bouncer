@@ -36,7 +36,7 @@ public class Actor : MonoBehaviour
     void Start()
     {
         player_body = GetComponent<Rigidbody2D>();
-        bullet_pool = GameObject.Find("BulletPool").GetComponent<BulletPool>();
+        bullet_pool = GameObject.Find("Bullet_Pool").GetComponent<BulletPool>();
     }
 
     void Update()
@@ -52,7 +52,10 @@ public class Actor : MonoBehaviour
         rotation = controls.Gameplay.Rotation.ReadValue<Vector2>();
         if (controls.Gameplay.Shoot.IsPressed())
         {
-            bullet_pool.Shoot(rotation, player_body.position);
+            bullet_pool.shooting_active = true;
+        } else
+        {
+            bullet_pool.shooting_active = false;
         }
             
     }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bullet;
+    GameObject origin;
     List<GameObject> bullet_pool;
     [SerializeField] int active_bullets = 0;
     int initial_bullet_count = 100;
@@ -13,7 +14,7 @@ public class BulletPool : MonoBehaviour
     [SerializeField] float cooldown = .5f;
     float time_to_next_spawn;
     float last_delta_time;
-    [SerializeField] static bool shooting_active = false;
+    [SerializeField] public bool shooting_active = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,13 +27,13 @@ public class BulletPool : MonoBehaviour
 
         // set the cooldown until the next spawn (if autoSpawn is activated)
         time_to_next_spawn = cooldown;
+        origin = GameObject.Find("Bullet_Origin");
     }
 
     // Update is called once per frame
     void Update()
     {
         last_delta_time = Time.deltaTime;
-        /**
         if (shooting_active) //Spawns a bullet when cannon is in shooting mode
         {
             time_to_next_spawn -= Time.deltaTime;
@@ -41,16 +42,6 @@ public class BulletPool : MonoBehaviour
                 SpawnBullet();
                 time_to_next_spawn = cooldown;
             }
-        }**/
-    }
-
-    public void Shoot(Vector2 player_rot, Vector2 player_pos)
-    {
-        time_to_next_spawn -= Time.deltaTime;
-        if (time_to_next_spawn < 0)
-        {
-            SpawnBullet();
-            time_to_next_spawn = cooldown;
         }
     }
 
@@ -79,7 +70,9 @@ public class BulletPool : MonoBehaviour
         // get the first deactivated object and activate it
         var currentBT = bullet_pool[active_bullets];
         currentBT.SetActive(true);
-        currentBT.transform.position = this.transform.position;
+        currentBT.transform.position = origin.transform.position;
+        currentBT.transform.rotation = origin.transform.rotation;
+        currentBT.GetComponent<Bullet>().Shoot();
 
         // increase active objects counter
         active_bullets += 1;
