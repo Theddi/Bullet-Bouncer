@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     int maximum_bounces = 3;
     static float bullet_speed = 20f;
     [SerializeField] int bounces = 0;
+    Vector2 last_velocity;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        last_velocity = bullet_body.velocity;
         if (bounces >= maximum_bounces)
         {//On maximum bounces the bullet shall be removed
             bounces = 0;
@@ -34,7 +36,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Wall>() != null)
         {//Collision with a wall shall reflect the bullet accordingly
-            //bullet_body.velocity = Vector2.Reflect(bullet_body.velocity, collision.contacts[0].normal);
+            bullet_body.velocity = Vector2.Reflect(last_velocity, collision.contacts[0].normal);
         }
     }
 
