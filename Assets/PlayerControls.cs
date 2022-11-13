@@ -46,9 +46,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Shoot"",
+                    ""name"": ""BulletShoot"",
                     ""type"": ""Button"",
                     ""id"": ""e7a027bb-3d7f-4dfc-b62f-cf71d93562c1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RopeShoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""431c39a6-cc7a-4a3b-b6d6-131edc56440f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -140,7 +149,18 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Shoot"",
+                    ""action"": ""BulletShoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69ef9fa9-e6cd-475f-b57d-7c441ee4be34"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RopeShoot"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -153,7 +173,8 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
         m_Gameplay_Rotation = m_Gameplay.FindAction("Rotation", throwIfNotFound: true);
-        m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
+        m_Gameplay_BulletShoot = m_Gameplay.FindAction("BulletShoot", throwIfNotFound: true);
+        m_Gameplay_RopeShoot = m_Gameplay.FindAction("RopeShoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,14 +236,16 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
     private readonly InputAction m_Gameplay_Rotation;
-    private readonly InputAction m_Gameplay_Shoot;
+    private readonly InputAction m_Gameplay_BulletShoot;
+    private readonly InputAction m_Gameplay_RopeShoot;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
         public InputAction @Rotation => m_Wrapper.m_Gameplay_Rotation;
-        public InputAction @Shoot => m_Wrapper.m_Gameplay_Shoot;
+        public InputAction @BulletShoot => m_Wrapper.m_Gameplay_BulletShoot;
+        public InputAction @RopeShoot => m_Wrapper.m_Gameplay_RopeShoot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -238,9 +261,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotation.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
                 @Rotation.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
                 @Rotation.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
-                @Shoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
-                @Shoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShoot;
+                @BulletShoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
+                @BulletShoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
+                @BulletShoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
+                @RopeShoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRopeShoot;
+                @RopeShoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRopeShoot;
+                @RopeShoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRopeShoot;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -251,9 +277,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
-                @Shoot.started += instance.OnShoot;
-                @Shoot.performed += instance.OnShoot;
-                @Shoot.canceled += instance.OnShoot;
+                @BulletShoot.started += instance.OnBulletShoot;
+                @BulletShoot.performed += instance.OnBulletShoot;
+                @BulletShoot.canceled += instance.OnBulletShoot;
+                @RopeShoot.started += instance.OnRopeShoot;
+                @RopeShoot.performed += instance.OnRopeShoot;
+                @RopeShoot.canceled += instance.OnRopeShoot;
             }
         }
     }
@@ -262,6 +291,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
-        void OnShoot(InputAction.CallbackContext context);
+        void OnBulletShoot(InputAction.CallbackContext context);
+        void OnRopeShoot(InputAction.CallbackContext context);
     }
 }

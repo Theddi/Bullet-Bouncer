@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Shoot",
+                    "name": "BulletShoot",
                     "type": "Button",
                     "id": "e7a027bb-3d7f-4dfc-b62f-cf71d93562c1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RopeShoot",
+                    "type": "Button",
+                    "id": "431c39a6-cc7a-4a3b-b6d6-131edc56440f",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -118,7 +127,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Shoot",
+                    "action": "BulletShoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "69ef9fa9-e6cd-475f-b57d-7c441ee4be34",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RopeShoot",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
