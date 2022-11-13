@@ -37,15 +37,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotation"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""badcf7da-0e14-4614-9f80-7016f9fded3e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""BulletShoot"",
                     ""type"": ""Button"",
                     ""id"": ""e7a027bb-3d7f-4dfc-b62f-cf71d93562c1"",
@@ -133,17 +124,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7d371ab4-40ce-42eb-bb16-45023888e0a1"",
-                    ""path"": ""<Gamepad>/rightStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotation"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ffb2cbd6-c5ad-454b-9799-c2b19e00b1de"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
@@ -172,7 +152,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Rotation = m_Gameplay.FindAction("Rotation", throwIfNotFound: true);
         m_Gameplay_BulletShoot = m_Gameplay.FindAction("BulletShoot", throwIfNotFound: true);
         m_Gameplay_RopeShoot = m_Gameplay.FindAction("RopeShoot", throwIfNotFound: true);
     }
@@ -235,7 +214,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Rotation;
     private readonly InputAction m_Gameplay_BulletShoot;
     private readonly InputAction m_Gameplay_RopeShoot;
     public struct GameplayActions
@@ -243,7 +221,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Rotation => m_Wrapper.m_Gameplay_Rotation;
         public InputAction @BulletShoot => m_Wrapper.m_Gameplay_BulletShoot;
         public InputAction @RopeShoot => m_Wrapper.m_Gameplay_RopeShoot;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
@@ -258,9 +235,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Rotation.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
-                @Rotation.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
-                @Rotation.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnRotation;
                 @BulletShoot.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
                 @BulletShoot.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
                 @BulletShoot.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnBulletShoot;
@@ -274,9 +248,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Rotation.started += instance.OnRotation;
-                @Rotation.performed += instance.OnRotation;
-                @Rotation.canceled += instance.OnRotation;
                 @BulletShoot.started += instance.OnBulletShoot;
                 @BulletShoot.performed += instance.OnBulletShoot;
                 @BulletShoot.canceled += instance.OnBulletShoot;
@@ -290,7 +261,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnRotation(InputAction.CallbackContext context);
         void OnBulletShoot(InputAction.CallbackContext context);
         void OnRopeShoot(InputAction.CallbackContext context);
     }

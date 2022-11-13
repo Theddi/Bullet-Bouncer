@@ -15,15 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotation",
-                    "type": "PassThrough",
-                    "id": "badcf7da-0e14-4614-9f80-7016f9fded3e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "BulletShoot",
                     "type": "Button",
                     "id": "e7a027bb-3d7f-4dfc-b62f-cf71d93562c1",
@@ -108,17 +99,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "7d371ab4-40ce-42eb-bb16-45023888e0a1",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotation",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
