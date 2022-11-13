@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D bullet_body;
     static int id = 0;
     public int bullet_id;
-    int maximum_bounces = 3;
+    [SerializeField] int maximum_bounces = 3;
     static float bullet_speed = 20f;
     [SerializeField] int bounces = 0;
     Vector2 last_velocity;

@@ -80,7 +80,7 @@ public class BulletPool : MonoBehaviour
 
     void DeactivateBullet(int bullet_id)
     {
-        Debug.Log("Deactivate");
+        //Debug.Log("Deactivate");
         for(int index = 0; index < bullet_pool.Count; index++)
         {
             Bullet bt = bullet_pool[index].GetComponent<Bullet>();
