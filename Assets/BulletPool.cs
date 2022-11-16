@@ -70,8 +70,10 @@ public class BulletPool : MonoBehaviour
         // get the first deactivated object and activate it
         var currentBT = bullet_pool[active_bullets];
         currentBT.SetActive(true);
-        currentBT.transform.position = origin.transform.position;
-        currentBT.transform.rotation = origin.transform.rotation;
+        
+        // put the bullet slightly in the background so that raycasts won't detect it
+        Vector3 spawnPos = new Vector3(origin.transform.position[0], origin.transform.position[1], -0.1f);
+        currentBT.transform.SetPositionAndRotation(spawnPos, origin.transform.rotation);
         currentBT.GetComponent<Bullet>().Shoot();
 
         // increase active objects counter

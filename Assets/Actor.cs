@@ -22,8 +22,8 @@ public class Actor : MonoBehaviour
     // flag whether the rope is currently out
     bool ropeShot;
 
-
-    
+    // how far the rope can be extended to reach objects
+    [SerializeField] float ropeRange = 50.0f;
     [SerializeField] float speed = 5.0f;
     [SerializeField] float angle = 0f;
     BulletPool bulletPool;
@@ -121,7 +121,7 @@ public class Actor : MonoBehaviour
             // the line changes depending on wether the player will hit an obstacle
             if(hit.collider == null){
                 Vector3 lineEndPoint = transform.position + 
-                                        new Vector3(currentRopeFaceDirection.x, currentRopeFaceDirection.y, 0) * 100;
+                                        new Vector3(currentRopeFaceDirection.x, currentRopeFaceDirection.y, 0) * ropeRange;
                 DrawLine(transform.position, lineEndPoint, Color.red, 0.04f);
             }else{
                 DrawLine(transform.position, hit.point, Color.green, 0.04f);
@@ -190,7 +190,9 @@ public class Actor : MonoBehaviour
         // the player should not hit itself with the raycast
         Vector2 startingPosition = new Vector2(currentPlayerPosition.x + direction.x * (GetComponent<CircleCollider2D>().radius*2 + 0.1f), 
                                                     currentPlayerPosition.y + direction.y * (GetComponent<CircleCollider2D>().radius*2 + 0.1f));
-        return Physics2D.Raycast(startingPosition, direction);
+        // ~0 is a shortform for all 1's and in this case means all layers are selected
+        // the depth is added to avoid bullets
+        return Physics2D.Raycast(startingPosition, direction, ropeRange, ~0,  -0.05f);
     }
 
 
