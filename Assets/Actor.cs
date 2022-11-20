@@ -1,69 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(PlayerInput))]
-public class Actor : MonoBehaviour
+public abstract class Actor : MonoBehaviour
 {
-    Rigidbody2D player_body;
-    PlayerControls controls;
-    PlayerInput input;
-    Vector2 face_direction = Vector2.up;
+    //Movement and Interaction
+    Rigidbody2D body;
+    Vector2 moveDirection;
+    Vector2 rotation;
+    float speed;
 
-    [SerializeField] Vector2 player_move = Vector2.zero;
-    [SerializeField] Vector2 rotation = Vector2.zero;
-    [SerializeField] float speed = 10.0f;
-    [SerializeField] float angle = 0f;
+    //Stats
+    float health;
+    float baseDamage;
+    float damageMulti;
+    float damageReduct;
 
-    void Awake()
-    {
-        controls = new PlayerControls();
-        input = GetComponent<PlayerInput>();
-    }
-
-    void OnEnable()
-    {
-        controls.Gameplay.Enable();
-    }
-    void OnDisable()
-    {
-        controls.Gameplay.Disable();
-    }
-
+    // Start is called before the first frame update
     void Start()
     {
-        player_body = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        HandleInput();
         HandleMovement();
         HandleRotation();
+        HandleDeath();
     }
 
-    void HandleInput()
+    public void TakeDamage(float damage)
     {
-        player_move = controls.Gameplay.Move.ReadValue<Vector2>();
-        rotation = controls.Gameplay.Rotation.ReadValue<Vector2>();
+        health -= damage * damageReduct;
     }
 
-    void HandleMovement()
+    public float DealDamage()
     {
-        player_body.velocity = player_move * speed;
+        return baseDamage * damageMulti;
     }
 
-    void HandleRotation()
-    {
-        if(rotation.sqrMagnitude > 0.02)
-        {
-            angle = Vector2.Angle(Vector2.up, rotation);
-            angle *= rotation.x < 0 ? 1 : -1;
-            player_body.transform.eulerAngles = new Vector3(0, 0, angle);
-        } else {
-            player_body.transform.eulerAngles = new Vector3(0, 0, angle);
-        }
-    }
+    public abstract void HandleMovement();
+
+    public abstract void HandleRotation();
+
+    public abstract void HandleDeath();
 }
