@@ -4,27 +4,28 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    Rigidbody2D bullet_body;
+    public GameObject owner;
+    Rigidbody2D bulletBody;
     static int id = 0;
-    public int bullet_id;
+    public int bulletId;
     int maximum_bounces = 3;
-    static float bullet_speed = 20f;
+    static float bulletSpeed = 20f;
     [SerializeField] int bounces = 0;
-    Vector2 last_velocity;
+    Vector2 lastVelocity;
 
     private void Start()
     {
-        bullet_body = GetComponent<Rigidbody2D>();
-        bullet_id = id++;
+        bulletBody = GetComponent<Rigidbody2D>();
+        bulletId = id++;
     }
     // Update is called once per frame
     void Update()
     {
-        last_velocity = bullet_body.velocity;
+        lastVelocity = bulletBody.velocity;
         if (bounces >= maximum_bounces)
         {//On maximum bounces the bullet shall be removed
             bounces = 0;
-            SendMessageUpwards("DeactivateBullet", bullet_id);
+            SendMessageUpwards("DeactivateBullet", bulletId);
         }
     }
 
@@ -36,12 +37,20 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.GetComponent<Wall>() != null)
         {//Collision with a wall shall reflect the bullet accordingly
-            bullet_body.velocity = Vector2.Reflect(last_velocity, collision.contacts[0].normal);
+            bulletBody.velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
+        }
+        Actor col = collision.gameObject.GetComponent<Actor>();
+        if (col != null)
+        {//Collision with an actor shall inflict damage
+            if(col != owner.GetComponent<Actor>())
+            {//Only inflicts damage, if not own bullets
+                col.TakeDamage(owner.GetComponent<Actor>().DealDamage());
+            }
         }
     }
 
     public void Shoot()
     {//Set initial velocity of bullet when spawned
-        bullet_body.velocity = bullet_body.transform.up * bullet_speed;
+        bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
     }
 }

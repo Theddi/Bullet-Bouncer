@@ -7,6 +7,7 @@ public class BulletPool : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject origin;
+    public GameObject owner;
     List<GameObject> bullet_pool;
     [SerializeField] int active_bullets = 0;
     int initial_bullet_count = 100;
@@ -49,8 +50,26 @@ public class BulletPool : MonoBehaviour
         // create a new object, deactivate it and assign its parent transform to the spawner
         var bt = Instantiate<GameObject>(bullet);
         bt.transform.parent = transform;
+        InitialBulletScale(bt);
         bt.SetActive(false);
+        bt.GetComponent<Bullet>().owner = this.owner;
         return bt;
+    }
+    void InitialBulletScale(GameObject bt)
+    {
+        string type = this.owner.name;
+        switch(type)
+        {
+            case "Player":
+                bt.transform.localScale = new Vector3(.5f, .5f, 1f);
+                break;
+            case "Turret":
+                bt.transform.localScale = new Vector3(.3f, .3f, 1f);
+                break;
+            default:
+                bt.transform.localScale = new Vector3(2f, 2f, 1f); //Make big, because visible effect
+                break;
+        }
     }
     void IncreasePool()
     {
@@ -81,11 +100,11 @@ public class BulletPool : MonoBehaviour
 
     void DeactivateBullet(int bullet_id)
     {
-        Debug.Log("Deactivate");
+        //Debug.Log("Deactivate");
         for(int index = 0; index < bullet_pool.Count; index++)
         {
             Bullet bt = bullet_pool[index].GetComponent<Bullet>();
-            if (bt.bullet_id == bullet_id && bullet_pool[index].activeSelf)
+            if (bt.bulletId == bullet_id && bullet_pool[index].activeSelf)
                 DestroyObject(index);
         }
     }

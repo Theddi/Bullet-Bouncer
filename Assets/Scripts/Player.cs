@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,27 +13,20 @@ public class Player : Actor
     PlayerInput input;
 
     // direction the player canon faces
-    [SerializeField] Vector2 currentShotFaceDirection = Vector2.zero;
+    Vector2 currentShotFaceDirection = Vector2.zero;
 
     // where the last dpad movement was pointing to
-    [SerializeField] Vector2 currentRopeFaceDirection = Vector2.zero;
+    Vector2 currentRopeFaceDirection = Vector2.zero;
     // direction the player will shoot the rope at
-    [SerializeField] Vector2 currentRopeShotDirection = Vector2.zero;
+    Vector2 currentRopeShotDirection = Vector2.zero;
 
     // flag whether the rope is currently out
     bool ropeShot;
 
     // how far the rope can be extended to reach objects
     [SerializeField] float ropeRange = 50.0f;
-    [SerializeField] float speed = 5.0f;
     [SerializeField] float angle = 0f;
     BulletPool bulletPool;
-
-    //Stats
-    float health = 1f;
-    float baseDamage = 1f;
-    float damageMulti = 1f;
-    float damageReduct = 1f;
 
     void Awake()
     {
@@ -69,6 +63,8 @@ public class Player : Actor
     {
         player_body = GetComponent<Rigidbody2D>();
         bulletPool = GameObject.Find("Player_Bullet_Pool").GetComponent<BulletPool>();
+        initiateStats(1f, 1f, 1f, 1f);
+        this.speed = 5f;
     }
 
     List<GameObject> lines = new List<GameObject>();
@@ -83,30 +79,34 @@ public class Player : Actor
         lines.Clear();
 
         //HandleInput();
-        HandleMovement();
-        HandleRotation();
+        if(Time.timeScale > 0)
+        {
+            HandleMovement();
+            HandleRotation();
+            HandleDeath();
+        }
     }
 
-/*
-// this was replaced by the handlers in the 'Awake()'
-//If the new approach proves to be laggy, we could use this again
-    void HandleInput()
-    {
-        if (controls.Gameplay.BulletShoot.IsPressed())
+    /*
+    // this was replaced by the handlers in the 'Awake()'
+    //If the new approach proves to be laggy, we could use this again
+        void HandleInput()
         {
-            bulletPool.shooting_active = true;
-        } else
-        {
-            bulletPool.shooting_active = false;
+            if (controls.Gameplay.BulletShoot.IsPressed())
+            {
+                bulletPool.shooting_active = true;
+            } else
+            {
+                bulletPool.shooting_active = false;
+            }
+
+
+
         }
 
+    */
 
-        
-    }
-
-*/
-
-    public override void HandleMovement()
+    protected override void HandleMovement()
     {
         // execute the rope movement
         if(ropeShot){
@@ -136,7 +136,7 @@ public class Player : Actor
         }   
     }
 
-    public override void HandleRotation()
+    protected override void HandleRotation()
     {
         if(currentShotFaceDirection.sqrMagnitude > 0.02)
         {
@@ -148,10 +148,12 @@ public class Player : Actor
         }
     }
 
-    public override void HandleDeath()
+    protected override void HandleDeath()
     {
         if (health <= 0)
+        {
             Time.timeScale = 0f;
+        }
     }
 
     Vector2 hitPoint = Vector2.zero;
