@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletPool : MonoBehaviour
 {
     public GameObject bullet;
-    GameObject origin;
+    public GameObject origin;
     List<GameObject> bullet_pool;
     [SerializeField] int active_bullets = 0;
     int initial_bullet_count = 100;
@@ -27,7 +27,6 @@ public class BulletPool : MonoBehaviour
 
         // set the cooldown until the next spawn (if autoSpawn is activated)
         time_to_next_spawn = cooldown;
-        origin = GameObject.Find("Bullet_Origin");
     }
 
     // Update is called once per frame

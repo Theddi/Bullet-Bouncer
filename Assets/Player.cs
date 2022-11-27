@@ -68,7 +68,7 @@ public class Player : Actor
     void Start()
     {
         player_body = GetComponent<Rigidbody2D>();
-        bulletPool = GameObject.Find("Bullet_Pool").GetComponent<BulletPool>();
+        bulletPool = GameObject.Find("Player_Bullet_Pool").GetComponent<BulletPool>();
     }
 
     List<GameObject> lines = new List<GameObject>();
