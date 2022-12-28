@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     Rigidbody2D bulletBody;
     static int id = 0;
     public int bulletId;
-    int maximum_bounces = 3;
+    int maximumBounces = 3;
     static float bulletSpeed = 20f;
     [SerializeField] int bounces = 0;
     Vector2 lastVelocity;
@@ -22,7 +22,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         lastVelocity = bulletBody.velocity;
-        if (bounces >= maximum_bounces)
+        if (bounces >= maximumBounces)
         {//On maximum bounces the bullet shall be removed
             bounces = 0;
             SendMessageUpwards("DeactivateBullet", bulletId);
@@ -57,5 +57,10 @@ public class Bullet : MonoBehaviour
     public void Shoot()
     {//Set initial velocity of bullet when spawned
         bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
+    }
+
+    public void setMaximumBounces(int max)
+    {
+		maximumBounces = max;   
     }
 }

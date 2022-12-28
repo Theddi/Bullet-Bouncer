@@ -51,12 +51,12 @@ public class BulletPool : MonoBehaviour
         // create a new object, deactivate it and assign its parent transform to the spawner
         var bt = Instantiate<GameObject>(bullet);
         bt.transform.parent = transform;
-        InitialBulletScale(bt);
+        InititBulletForOwner(bt);
         bt.SetActive(false);
         bt.GetComponent<Bullet>().owner = this.owner;
         return bt;
     }
-    void InitialBulletScale(GameObject bt)
+    void InititBulletForOwner(GameObject bt)
     {// Sets the scale for the bullet, depending on the owner of the bullet
         string type = this.owner.name;
         switch(type)
@@ -66,6 +66,7 @@ public class BulletPool : MonoBehaviour
                 bt.GetComponent<Rigidbody2D>().gravityScale = 2;
                 break;
             case "Turret":
+                bt.GetComponent<Bullet>().setMaximumBounces(1);
                 bt.transform.localScale = new Vector3(.3f, .3f, 1f);
                 break;
             default:
