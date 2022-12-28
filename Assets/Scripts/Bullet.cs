@@ -41,11 +41,13 @@ public class Bullet : MonoBehaviour
         }
         Actor col = collision.gameObject.GetComponent<Actor>();
         if (col != null)
-        {//Collision with an actor shall inflict damage
+        {//Collision with an actor shall inflict damage, and remove that bullet
             if(col != owner.GetComponent<Actor>())
             {//Only inflicts damage, if not own bullets
                 col.TakeDamage(owner.GetComponent<Actor>().DealDamage());
             }
+            bounces = 0;
+            SendMessageUpwards("DeactivateBullet", bulletId);
         }
     }
 

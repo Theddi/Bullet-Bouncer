@@ -63,6 +63,7 @@ public class BulletPool : MonoBehaviour
         {
             case "Player":
                 bt.transform.localScale = new Vector3(.5f, .5f, 1f);
+                bt.GetComponent<Rigidbody2D>().gravityScale = 2;
                 break;
             case "Turret":
                 bt.transform.localScale = new Vector3(.3f, .3f, 1f);
