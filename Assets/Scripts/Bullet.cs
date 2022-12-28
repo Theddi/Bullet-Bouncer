@@ -46,8 +46,11 @@ public class Bullet : MonoBehaviour
             {//Only inflicts damage, if not own bullets
                 col.TakeDamage(owner.GetComponent<Actor>().DealDamage());
             }
-            bounces = 0;
-            SendMessageUpwards("DeactivateBullet", bulletId);
+            if( col != owner.GetComponent<Actor>())
+            {
+                bounces = 0;
+                SendMessageUpwards("DeactivateBullet", bulletId);
+            }
         }
     }
 
