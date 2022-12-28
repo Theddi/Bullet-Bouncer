@@ -115,7 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68b3d0532fcd4541a62a4698c5d7f01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_id: 0
+  owner: {fileID: 0}
+  bulletId: 0
   bounces: 0
 --- !u!50 &-4039465149085183798
 Rigidbody2D:
