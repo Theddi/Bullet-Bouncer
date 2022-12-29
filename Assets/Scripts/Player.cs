@@ -19,6 +19,7 @@ public class Player : Actor
     // Rope interaction
     Vector2 currentRopeFaceDirection = Vector2.zero; // where the last dpad movement was pointing to
     Vector2 currentRopeShotDirection = Vector2.zero; // direction the player will shoot the rope at
+	[SerializeField] float raycastNoInterceptionRadius = 15f;
     bool ropeShot; // flag whether the rope is currently out
     [SerializeField] float ropeRange = 50.0f; // how far the rope can be extended to reach objects
     
@@ -167,8 +168,8 @@ public class Player : Actor
     RaycastHit2D PlayerRayCast(Vector3 currentPlayerPosition, Vector2 direction)
     {
         // the player should not hit itself with the raycast
-        Vector2 startingPosition = new Vector2(currentPlayerPosition.x + direction.x * (GetComponent<CircleCollider2D>().radius*2 + 0.1f), 
-                                                    currentPlayerPosition.y + direction.y * (GetComponent<CircleCollider2D>().radius*2 + 0.1f));
+        Vector2 startingPosition = new Vector2(currentPlayerPosition.x + direction.x * raycastNoInterceptionRadius, 
+                                                    currentPlayerPosition.y + direction.y * raycastNoInterceptionRadius);
         // ~0 is a shortform for all 1's and in this case means all layers are selected
         // the depth is added to avoid bullets
         return Physics2D.Raycast(startingPosition, direction, ropeRange, ~0,  -0.05f);
