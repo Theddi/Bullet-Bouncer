@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public GameObject owner;
+    GameManager manager;
+	public GameObject owner;
+    bool isPlayerBullet = false;
+
     Rigidbody2D bulletBody;
     static int id = 0;
     public int bulletId;
@@ -15,30 +18,34 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        bulletBody = GetComponent<Rigidbody2D>();
+		manager = FindObjectOfType<GameManager>();
+		bulletBody = GetComponent<Rigidbody2D>();
         bulletId = id++;
-    }
+        isPlayerBullet = (owner.GetComponent<Player>() != null);
+	}
     // Update is called once per frame
     void Update()
     {
         lastVelocity = bulletBody.velocity;
         if (bounces >= maximumBounces)
         {//On maximum bounces the bullet shall be removed
+			if(isPlayerBullet)
+			{
+				manager.IncreaseScore(1);
+			}
 			DestroyBullet();
 		}
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-		GameManager manager = FindObjectOfType<GameManager>();
         Bullet bulletCollision = collision.gameObject.GetComponent<Bullet>();
 		if (bulletCollision == null)
         {//Collision with everything except another Bullet, increases Bounces
             ++bounces;
-        } else
-        {
-            if(owner != bulletCollision.owner)
-            {
+        } else {
+            if(owner != bulletCollision.owner && isPlayerBullet)
+            {//Increase score by 1 for a bullet collision, of different owners
 				manager.IncreaseScore(1);
 			}
 			DestroyBullet();
@@ -54,9 +61,10 @@ public class Bullet : MonoBehaviour
             if(col != owner.GetComponent<Actor>())
             {//Only inflicts damage, if not own bullets
                 col.TakeDamage(owner.GetComponent<Actor>().DealDamage());
-            }
-            if( col != owner.GetComponent<Actor>())
-            {
+                if(isPlayerBullet)
+                {//When the player hit another actor, increase score by 10
+					manager.IncreaseScore(10);
+				}
 				DestroyBullet();
 			}
         }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
-    //Movement and Interaction
-    protected Rigidbody2D body;
+	//Game Management
+	protected GameManager manager;
+
+	//Movement and Interaction
+	protected Rigidbody2D body;
     [SerializeField] protected Vector2 moveDirection;
     [SerializeField] protected Vector2 rotation;
     [SerializeField] protected float speed;
@@ -20,6 +23,10 @@ public abstract class Actor : MonoBehaviour
     {
         //Debug.Log("took damage");
         this.health -= damage * damageReduct;
+        if(health <= 0)
+        {
+            HandleDeath();
+		}
     }
 
     public float DealDamage()
@@ -27,13 +34,14 @@ public abstract class Actor : MonoBehaviour
         //Debug.Log("dealt damage");
         return baseDamage * damageMulti;
     }
-    protected void initiateStats(float health, float damage, float multi, float reduct)
+    protected void InitiateActor(float health, float damage, float multi, float reduct)
     {
         this.health = health;
         this.damageReduct = reduct;
         this.damageMulti = multi;
         this.baseDamage = damage;
-    }
+		manager = FindObjectOfType<GameManager>();
+	}
     protected abstract void HandleMovement();
 
     protected abstract void HandleRotation();

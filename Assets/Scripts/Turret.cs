@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Turret : Actor
 {
-    Player target;
+	Player target;
     GameObject cannon;
     BulletPool shoot;
 	Vector2 direction = Vector2.zero;
@@ -16,18 +16,16 @@ public class Turret : Actor
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindObjectOfType<Player>();
-        initiateStats(1f, 1f, 1f, 1f);
+		InitiateActor(10f, 1f, 1f, 1f);
         this.speed = 0f;
         cannon = GameObject.Find("Cannon_Rotary_Axis");
 		shoot = GameObject.Find("Turret_Bullet_Pool").GetComponent<BulletPool>();
-
 	}
 
     // Update is called once per frame
     void Update()
     {
 		direction = target.transform.position - cannon.transform.position;
-		HandleDeath();
         HandleMovement();
         if (direction.sqrMagnitude < targetRange)
         {
@@ -50,6 +48,9 @@ public class Turret : Actor
 
     protected override void HandleDeath()
     {
-    
-    }
+        manager.IncreaseScore(100);
+		gameObject.SetActive(false);
+		shoot.shootingActive = false;
+		enabled = false;
+	}
 }

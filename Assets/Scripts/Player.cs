@@ -54,7 +54,7 @@ public class Player : Actor
     {
         body = GetComponent<Rigidbody2D>();
         bulletPool = GameObject.Find("Player_Bullet_Pool").GetComponent<BulletPool>();
-        initiateStats(5f, 1f, 1f, 1f);
+		InitiateActor(5f, 1f, 1f, 1f);
         this.speed = 5f;
     }
 
@@ -75,7 +75,6 @@ public class Player : Actor
         {
             HandleMovement();
             HandleRotation();
-            HandleDeath();
         }
     }
     protected override void HandleMovement()
@@ -123,10 +122,7 @@ public class Player : Actor
 
     protected override void HandleDeath()
     {
-        if (health <= 0)
-        {
-            Time.timeScale = 0f;
-        }
+        Time.timeScale = 0f;
     }
 
     Vector2 hitPoint = Vector2.zero;
