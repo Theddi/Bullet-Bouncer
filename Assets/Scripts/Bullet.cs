@@ -24,17 +24,26 @@ public class Bullet : MonoBehaviour
         lastVelocity = bulletBody.velocity;
         if (bounces >= maximumBounces)
         {//On maximum bounces the bullet shall be removed
-            bounces = 0;
-            SendMessageUpwards("DeactivateBullet", bulletId);
-        }
+			DestroyBullet();
+		}
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.GetComponent<Bullet>() == null)
+		GameManager manager = FindObjectOfType<GameManager>();
+        Bullet bulletCollision = collision.gameObject.GetComponent<Bullet>();
+		if (bulletCollision == null)
         {//Collision with everything except another Bullet, increases Bounces
             ++bounces;
-        }
+        } else
+        {
+            if(owner != bulletCollision.owner)
+            {
+				manager.IncreaseScore(1);
+			}
+			DestroyBullet();
+		}
+
         if (collision.gameObject.GetComponent<Wall>() != null)
         {//Collision with a wall shall reflect the bullet accordingly
             bulletBody.velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
@@ -48,9 +57,8 @@ public class Bullet : MonoBehaviour
             }
             if( col != owner.GetComponent<Actor>())
             {
-                bounces = 0;
-                SendMessageUpwards("DeactivateBullet", bulletId);
-            }
+				DestroyBullet();
+			}
         }
     }
 
@@ -63,4 +71,11 @@ public class Bullet : MonoBehaviour
     {
 		maximumBounces = max;   
     }
+
+	public void DestroyBullet()
+	{
+        //Debug.Log("Deactivate on Line:"+line);
+		bounces = 0;
+		SendMessageUpwards("DeactivateBullet", bulletId);
+	}
 }
