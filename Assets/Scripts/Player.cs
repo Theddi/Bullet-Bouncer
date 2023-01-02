@@ -123,6 +123,7 @@ public class Player : Actor
     protected override void HandleDeath()
     {
         Time.timeScale = 0f;
+        manager.GameOver();
     }
 
     Vector2 hitPoint = Vector2.zero;
