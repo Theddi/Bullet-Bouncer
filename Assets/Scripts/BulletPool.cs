@@ -57,21 +57,13 @@ public class BulletPool : MonoBehaviour
         return bt;
     }
     void InititBulletForOwner(GameObject bt)
-    {// Sets the scale for the bullet, depending on the owner of the bullet
-        string type = this.owner.name;
-        switch(type)
+    {// Initiates the bullet, depending on the owner of the bullet
+        if (this.owner.GetComponent<Turret>())
         {
-            case "Player":
-                bt.transform.localScale = new Vector3(.5f, .5f, 1f);
-                bt.GetComponent<Rigidbody2D>().gravityScale = 2;
-                break;
-            case "Turret":
-                bt.GetComponent<Bullet>().setMaximumBounces(1);
-                bt.transform.localScale = new Vector3(.3f, .3f, 1f);
-                break;
-            default:
-                bt.transform.localScale = new Vector3(2f, 2f, 1f); //Make big, because visible effect
-                break;
+            bt.GetComponent<Bullet>().setMaximumBounces(1);
+        } else if(!this.owner.GetComponent<Player>())
+		{//Make big, because visible effect for undefined bullet
+			bt.transform.localScale = new Vector3(2f, 2f, 1f); 
         }
     }
     void IncreasePool()
