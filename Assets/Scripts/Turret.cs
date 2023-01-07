@@ -6,7 +6,7 @@ using UnityEngine;
 public class Turret : Actor
 {
 	Player target;
-    GameObject cannon;
+    Transform cannon; // Transform of the cannon (it's origin)
     BulletPool shoot;
 	Vector2 direction = Vector2.zero;
     float targetRange = 1000f;
@@ -18,14 +18,14 @@ public class Turret : Actor
         target = GameObject.FindObjectOfType<Player>();
 		InitiateActor(10f, 1f, 1f, 1f);
         this.speed = 0f;
-        cannon = GameObject.Find("Cannon_Rotary_Axis");
-		shoot = GameObject.Find("Turret_Bullet_Pool").GetComponent<BulletPool>();
+        cannon = transform.Find("Cannon_Rotary_Axis");
+		shoot = transform.Find("Turret_Bullet_Pool").GetComponent<BulletPool>();
 	}
 
     // Update is called once per frame
     void Update()
     {
-		direction = target.transform.position - cannon.transform.position;
+		direction = target.transform.position - cannon.position;
         HandleMovement();
         if (direction.sqrMagnitude < targetRange)
         {
@@ -43,7 +43,7 @@ public class Turret : Actor
 
     protected override void HandleRotation()
     {
-        cannon.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
+        cannon.rotation = Quaternion.FromToRotation(Vector3.up, direction);
     }
 
     protected override void HandleDeath()
