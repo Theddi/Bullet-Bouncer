@@ -14,27 +14,27 @@ public class BulletPool : MonoBehaviour
     int bullePoolIncrement = 20;
     [SerializeField] float cooldown = .5f;
     float timeToNextSpawn;
-    float lastDeltaTime;
     [SerializeField] public bool shootingActive = false;
 
-    // Start is called before the first frame update
-    void Start()
+	private void Awake()
+	{
+		// initialize object pool by setting a capacity and initializing deactivated gameObjects
+		// Note, that this results in a higher loading time at the beginning, since all objects need to be created
+		bullePool = new List<GameObject>(initialBulletCount);
+		for (int i = 0; i < initialBulletCount; i++)
+		{
+			bullePool.Add(createNewObject());
+		}
+	}
+
+	void Start()
     {
-        // initialize object pool by setting a capacity and initializing deactivated gameObjects
-        // Note, that this results in a higher loading time at the beginning, since all objects need to be created
-        bullePool = new List<GameObject>(initialBulletCount);
-        for (int i = 0; i < initialBulletCount; i++)
-        {
-            bullePool.Add(createNewObject());
-        }
-        // set the cooldown until the next spawn (if autoSpawn is activated)
         timeToNextSpawn = cooldown;
     }
 
     // Update is called once per frame
     void Update()
     {
-        lastDeltaTime = Time.deltaTime;
         if (shootingActive) //Spawns a bullet when cannon is in shooting mode
         {
             timeToNextSpawn -= Time.deltaTime;
@@ -50,8 +50,7 @@ public class BulletPool : MonoBehaviour
     {
         // create a new object, deactivate it and assign its parent transform to the spawner
         var bt = Instantiate<GameObject>(bullet);
-        bt.transform.parent = transform;
-        InititBulletForOwner(bt);
+		InititBulletForOwner(bt);
         bt.SetActive(false);
         bt.GetComponent<Bullet>().owner = this.owner;
         return bt;
@@ -93,7 +92,7 @@ public class BulletPool : MonoBehaviour
         activeBullets += 1;
     }
 
-    void DeactivateBullet(int bullet_id)
+    public void DeactivateBullet(int bullet_id)
     {
         //Debug.Log("Deactivate");
         for(int index = 0; index < bullePool.Count; index++)

@@ -19,7 +19,7 @@ public class Turret : Actor
 		InitiateActor(10f, 1f, 1f, 1f);
         this.speed = 0f;
         cannon = transform.Find("Cannon_Rotary_Axis");
-		shoot = transform.Find("Turret_Bullet_Pool").GetComponent<BulletPool>();
+		shoot = transform.Find("bulletPool").GetComponent<BulletPool>();
 	}
 
     // Update is called once per frame
