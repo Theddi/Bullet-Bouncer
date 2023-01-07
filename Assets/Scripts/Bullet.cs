@@ -84,6 +84,6 @@ public class Bullet : MonoBehaviour
 	{
         //Debug.Log("Deactivate on Line:"+line);
 		bounces = 0;
-		SendMessageUpwards("DeactivateBullet", bulletId);
+        owner.transform.Find("bulletPool").GetComponent<BulletPool>().DeactivateBullet(bulletId);
 	}
 }
