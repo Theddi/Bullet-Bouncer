@@ -16,11 +16,13 @@ public class Player : Actor
     Vector2 currentShotFaceDirection = Vector2.zero; // direction the player canon faces
     float angle = 0f;
 
-    // Rope interaction
-    public Vector2 currentRopeFaceDirection = Vector2.zero; // where the last dpad movement was pointing to
-    public Vector2 currentRopeShotDirection = Vector2.zero; // direction the player will shoot the rope at
-	[SerializeField] float raycastNoInterceptionRadius = 15f;
-    bool ropeShot; // flag whether the rope is currently out
+    // where the last dpad movement was pointing to
+    public Vector2 currentRopeFaceDirection = Vector2.zero; 
+
+    // direction the player will shoot the rope at
+    public Vector2 currentRopeShotDirection = Vector2.zero; 
+    // flag whether the rope is currently out
+    bool ropeShot; 
     [SerializeField] float ropeRange = 50.0f; // how far the rope can be extended to reach objects
     
     void Awake()
@@ -90,34 +92,7 @@ public class Player : Actor
     }
     protected override void HandleMovement()
     {
-/*
-        // execute the rope movement
-        if(ropeShot)
-        {
-            // move in the direction stored when the fire button was pressed
-            body.velocity += currentRopeShotDirection * speed * Time.deltaTime;
-
-            // draw the rope
-            if(hitPoint != Vector2.zero)
-            {
-                DrawLine(transform.position, hitPoint, new Color(92.0f / 255.0f, 47.0f / 255.0f, 16.0f / 255.0f), 0.2f);
-            }
-        }
-
-        // draw a hint line for where the player faces right now and what the player would hit with a rope shot
-        if(currentRopeFaceDirection != Vector2.zero && !ropeShot)
-        {
-            RaycastHit2D hit = PlayerRayCast(transform.position, currentRopeFaceDirection);
-
-            // the line changes depending on wether the player will hit an obstacle
-            if(hit.collider == null)
-            {
-                Vector3 lineEndPoint = transform.position + new Vector3(currentRopeFaceDirection.x, currentRopeFaceDirection.y, 0) * ropeRange;
-                DrawLine(transform.position, lineEndPoint, Color.red, 0.04f);
-            } else {
-                DrawLine(transform.position, hit.point, Color.green, 0.04f);
-            }
-        }  */ 
+        // moved to Rope.Update(), since all the movement comes from the rope
     }
 
     protected override void HandleRotation()
@@ -147,6 +122,9 @@ public class Player : Actor
     Vector2 hitPoint = Vector2.zero;
     void ShootRope()
     {
+        // do not execute when the game is frozen
+        if(Time.timeScale == 0) return;
+
         // this spawns a rope attached to the player that extends until it hits something or is extended to maximum length
         if(currentRopeFaceDirection != Vector2.zero && ropeShot == false)
         {
@@ -156,6 +134,7 @@ public class Player : Actor
             currentRopeFaceDirection.Normalize();
             currentRopeShotDirection = currentRopeFaceDirection;
 
+            // create and init the rope
             var ropeAngle = Vector2.Angle(Vector2.up, currentRopeShotDirection);
             ropeAngle *= currentRopeShotDirection.x < 0 ? 1 : -1;
 
@@ -170,22 +149,6 @@ public class Player : Actor
             playerRope.GetComponent<Rope>().userBody = body;
 
             ropes.Add(playerRope);
-
-            /*
-            RaycastHit2D hit = PlayerRayCast(transform.position, currentRopeShotDirection); // shot a raycast in the direction the player wants to move in
-
-            if (hit.collider != null)
-            {// if it hits something...
-                ropeShot = true;
-
-                // stop whatever movement was happening
-                body.gravityScale = 0.0f;
-                body.velocity = Vector2.zero;
-
-                hitPoint = hit.point;
-            } else {// do not shoot rope if there is nothing hit
-                CancelRope();
-            }*/
         }
     }
 
@@ -194,11 +157,14 @@ public class Player : Actor
         ropeShot = false;
         hitPoint = Vector2.zero; 
         currentRopeShotDirection = Vector2.zero;
-        body.gravityScale = 1.0f;
         playerRope = null; // the rope is destroyed in Update()
     }
 
 // UTILS
+
+// CURRENTLY NOT USED, maybe used later
+
+    [SerializeField] float raycastNoInterceptionRadius = 15f;
 
     RaycastHit2D PlayerRayCast(Vector3 currentPlayerPosition, Vector2 direction)
     {
