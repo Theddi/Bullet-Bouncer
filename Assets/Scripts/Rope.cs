@@ -4,25 +4,6 @@ using UnityEngine;
 
 public class Rope : MonoBehaviour
 {
-/*
-    static private GameObject rope;
-
-    public static GameObject get(){
-        if (rope == null){
-            rope = new GameObject("Rope");
-            rope.transform.localScale = new Vector3(2.5f, 5.0f, 1);
-            rope.transform.position = new Vector3(0,0,20);
-
-            rope.AddComponent<Rigidbody2D>();
-            rope.AddComponent<SpriteRenderer>();
-            rope.AddComponent<PolygonCollider2D>();
-
-            Material ropeMaterial = Resources.Load("Rope.mat", typeof(Material)) as Material;
-            rope.GetComponent<SpriteRenderer>().material = ropeMaterial;
-        }
-        
-        return rope;
-    }*/
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +11,8 @@ public class Rope : MonoBehaviour
         
     }
 
-    void OnEnable(){
+    void OnEnable()
+    {
         // FIXME only work for player: the problem here is that userBody is not set upon creation
         GameObject player = GameObject.FindGameObjectWithTag("Player"); 
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>()); 
@@ -90,7 +72,8 @@ public class Rope : MonoBehaviour
         transform.position += Vector3.up * 0.5f;
     }
 
-    public void Offset(){
+    public void Offset()
+    {
         var length = transform.localScale.x;
 
         offset = new Vector3(length/2, 0.0f, 0.0f);
@@ -104,7 +87,8 @@ public class Rope : MonoBehaviour
         transform.position += offset;
     }
 
-    public void Extend(float amount){
+    public void Extend(float amount)
+    {
         amount = amount * Time.deltaTime;
 
         // check length restriction
@@ -120,7 +104,8 @@ public class Rope : MonoBehaviour
         Offset();
     }
 
-    public void Approach(Vector3 point, float speed){
+    public void Approach(Vector3 point, float speed)
+    {
         userBody.velocity += (new Vector2(direction.x, direction.y)) * speed * Time.deltaTime;
     }
 
