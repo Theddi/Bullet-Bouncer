@@ -17,8 +17,8 @@ public class Player : Actor
     float angle = 0f;
 
     // Rope interaction
-    Vector2 currentRopeFaceDirection = Vector2.zero; // where the last dpad movement was pointing to
-    Vector2 currentRopeShotDirection = Vector2.zero; // direction the player will shoot the rope at
+    public Vector2 currentRopeFaceDirection = Vector2.zero; // where the last dpad movement was pointing to
+    public Vector2 currentRopeShotDirection = Vector2.zero; // direction the player will shoot the rope at
 	[SerializeField] float raycastNoInterceptionRadius = 15f;
     bool ropeShot; // flag whether the rope is currently out
     [SerializeField] float ropeRange = 50.0f; // how far the rope can be extended to reach objects
@@ -58,17 +58,27 @@ public class Player : Actor
         this.speed = 5f;
     }
 
-    List<GameObject> lines = new List<GameObject>();
+
+    public GameObject rope;
+    public GameObject playerRope;
+
+    List<GameObject> ropes = new List<GameObject>();
 
 // Update is called once per frame
     void Update()
     {
-        // clear all the lines from the screen to draw new ones
-        foreach(GameObject line in lines)
+
+        //  clear all unnecessary ropes
+        // this removal approach ensures no ropes will be missed indefinitely 
+        foreach(GameObject rope in ropes)
         {
-            GameObject.Destroy(line);
+            if(rope != playerRope)
+                GameObject.Destroy(rope);
         }
-        lines.Clear();
+        ropes.Clear();
+        if(playerRope != null) ropes.Add(playerRope);
+
+
 
         // HandleInput();
         if(Time.timeScale > 0)
@@ -80,6 +90,7 @@ public class Player : Actor
     }
     protected override void HandleMovement()
     {
+/*
         // execute the rope movement
         if(ropeShot)
         {
@@ -106,7 +117,7 @@ public class Player : Actor
             } else {
                 DrawLine(transform.position, hit.point, Color.green, 0.04f);
             }
-        }   
+        }  */ 
     }
 
     protected override void HandleRotation()
@@ -129,15 +140,38 @@ public class Player : Actor
         }
     }
 
+    
+
+    
+
     Vector2 hitPoint = Vector2.zero;
     void ShootRope()
     {
+        // this spawns a rope attached to the player that extends until it hits something or is extended to maximum length
         if(currentRopeFaceDirection != Vector2.zero && ropeShot == false)
         {
+            ropeShot = true;
+
             // store where to move as long as the fire button stays pressed
             currentRopeFaceDirection.Normalize();
             currentRopeShotDirection = currentRopeFaceDirection;
-            
+
+            var ropeAngle = Vector2.Angle(Vector2.up, currentRopeShotDirection);
+            ropeAngle *= currentRopeShotDirection.x < 0 ? 1 : -1;
+
+            // the rope faces in the pressed direction
+            playerRope = Instantiate(rope);
+            //playerRope.transform.SetParent(transform);
+            playerRope.transform.position = transform.position;
+            playerRope.transform.Rotate(0,0,ropeAngle);
+
+            playerRope.GetComponent<Rope>().direction = new Vector3(currentRopeShotDirection.x, currentRopeShotDirection.y, 0);
+            playerRope.GetComponent<Rope>().Offset();
+            playerRope.GetComponent<Rope>().userBody = body;
+
+            ropes.Add(playerRope);
+
+            /*
             RaycastHit2D hit = PlayerRayCast(transform.position, currentRopeShotDirection); // shot a raycast in the direction the player wants to move in
 
             if (hit.collider != null)
@@ -151,7 +185,7 @@ public class Player : Actor
                 hitPoint = hit.point;
             } else {// do not shoot rope if there is nothing hit
                 CancelRope();
-            }
+            }*/
         }
     }
 
@@ -161,6 +195,7 @@ public class Player : Actor
         hitPoint = Vector2.zero; 
         currentRopeShotDirection = Vector2.zero;
         body.gravityScale = 1.0f;
+        playerRope = null; // the rope is destroyed in Update()
     }
 
 // UTILS
@@ -189,6 +224,6 @@ public class Player : Actor
         renderer.startWidth = width;
         renderer.SetPosition(0, start);
         renderer.SetPosition(1, end);
-        lines.Add(newLine);
+        //lines.Add(newLine);
     }
 }
