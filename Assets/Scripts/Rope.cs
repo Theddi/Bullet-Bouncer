@@ -127,20 +127,17 @@ public class Rope : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-        // ignore any further collison once hooked
-        if(isHooked) return;
         
         if(collision.gameObject.tag == "Wall"){
-            isHooked = true;
-            hookPoint = collision.GetContact(0).point;
 
-            // destroy the rope if a wall if piercing through the middle of the rope
+            hookPoint = collision.GetContact(0).point;
+            isHooked = true;
+
+            // rope is broken because something pierced the middle
             float distanceToHookPoint = (hookPoint - userBody.transform.position).magnitude;
             var length = transform.localScale.x;
-            if(distanceToHookPoint * 1.05f < length) {
-                GameObject.Destroy(gameObject); 
-            }
+            if(distanceToHookPoint * 1.1f < length) GameObject.Destroy(gameObject); // 10% errorspan to make this filter more lenient
+            
         }
     }
 }
