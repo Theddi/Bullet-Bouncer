@@ -130,11 +130,16 @@ public class Rope : MonoBehaviour
         
         if(collision.gameObject.tag == "Wall"){
 
-            hookPoint = collision.GetContact(0).point;
-            isHooked = true;
+            Vector3 tempHookPoint = collision.GetContact(0).point;
+
+            // only set the hookpoint once
+            if(!isHooked){
+                isHooked = true;
+                hookPoint = tempHookPoint;
+            }
 
             // rope is broken because something pierced the middle
-            float distanceToHookPoint = (hookPoint - userBody.transform.position).magnitude;
+            float distanceToHookPoint = (tempHookPoint - userBody.transform.position).magnitude;
             var length = transform.localScale.x;
             if(distanceToHookPoint * 1.1f < length) GameObject.Destroy(gameObject); // 10% errorspan to make this filter more lenient
             
