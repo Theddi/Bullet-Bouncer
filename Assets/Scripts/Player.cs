@@ -70,7 +70,7 @@ public class Player : Actor
     void Update()
     {
 
-        //  clear all unnecessary ropes
+        //  clears all unnecessary ropes
         // this removal approach ensures no ropes will be missed indefinitely 
         foreach(GameObject rope in ropes)
         {
@@ -78,7 +78,14 @@ public class Player : Actor
                 GameObject.Destroy(rope);
         }
         ropes.Clear();
-        if(playerRope != null) ropes.Add(playerRope);
+        // the playerRope could have destroyed itself
+        if(playerRope == null) {
+            ropeShot = false;
+            hitPoint = Vector2.zero; 
+            currentRopeShotDirection = Vector2.zero;
+        }
+        // otherwise: keep the rope
+        else ropes.Add(playerRope);
 
 
 

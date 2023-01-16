@@ -13,16 +13,17 @@ public class Rope : MonoBehaviour
 
     void OnEnable()
     {
-        // FIXME only work for player: the problem here is that userBody is not set upon creation
-        GameObject player = GameObject.FindGameObjectWithTag("Player"); 
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>()); 
-        Physics2D.IgnoreCollision(GameObject.Find("MapStart").GetComponent<Collider2D>(), GetComponent<Collider2D>());
-        Physics2D.IgnoreCollision(GameObject.Find("MapEnd").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        // rope should only interact with walls
+        Physics2D.IgnoreLayerCollision(0, 6);
+        Physics2D.IgnoreLayerCollision(1, 6);
+        Physics2D.IgnoreLayerCollision(2, 6);
+        Physics2D.IgnoreLayerCollision(3, 6);
+        Physics2D.IgnoreLayerCollision(4, 6);
     }
 
     public float ropeSpeed;
 
-    public float ropeLength;
+    public float maxRopeLength;
 
     public Vector3 direction = Vector3.zero;
 
@@ -42,7 +43,10 @@ public class Rope : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!isHooked)  Extend(ropeSpeed);
+        // termporarly disable collision for transformation phase
+        GetComponent<Collider2D>().enabled = false;
+
+        if(!isHooked) Extend(ropeSpeed);
         else {
             Approach(hookPoint, ropeSpeed);
 
@@ -72,6 +76,10 @@ public class Rope : MonoBehaviour
 
         // makes it look a bit better: the rope is attached to the upper body
         transform.position += Vector3.up * 0.5f;
+
+        
+        // reenable disable collision for transformation phase
+        GetComponent<Collider2D>().enabled = true;
     }
 
     public void Offset()
@@ -93,17 +101,23 @@ public class Rope : MonoBehaviour
     {
         amount = amount * Time.deltaTime;
 
-        // check length restriction
-        if(transform.localScale.x + amount >= ropeLength) return;
-        
         // reset position to calculate everything anew
         transform.position = userBody.transform.position;
 
-        // increase size
-        transform.localScale += new Vector3(amount,0,0);
+        // check length restriction
+        if(transform.localScale.x + amount < maxRopeLength) {
+            // increase size 
+            transform.localScale += new Vector3(amount,0,0);
+        }
+
 
         // offset correctly
         Offset();
+
+        
+        /* btw: the reset and Offset() have to be called every frame in the extending phase
+         * because otherwise, the rope will fly off for some weird reason.
+        */
     }
 
     public void Approach(Vector3 point, float speed)
@@ -113,10 +127,20 @@ public class Rope : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+
+        // ignore any further collison once hooked
+        if(isHooked) return;
         
         if(collision.gameObject.tag == "Wall"){
             isHooked = true;
             hookPoint = collision.GetContact(0).point;
+
+            // destroy the rope if a wall if piercing through the middle of the rope
+            float distanceToHookPoint = (hookPoint - userBody.transform.position).magnitude;
+            var length = transform.localScale.x;
+            if(distanceToHookPoint * 1.05f < length) {
+                GameObject.Destroy(gameObject); 
+            }
         }
     }
 }
