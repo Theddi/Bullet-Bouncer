@@ -16,6 +16,8 @@ public class Rope : MonoBehaviour
         // FIXME only work for player: the problem here is that userBody is not set upon creation
         GameObject player = GameObject.FindGameObjectWithTag("Player"); 
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>()); 
+        Physics2D.IgnoreCollision(GameObject.Find("MapStart").GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(GameObject.Find("MapEnd").GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 
     public float ropeSpeed;
