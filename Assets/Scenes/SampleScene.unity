@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 73349734}
   - component: {fileID: 73349733}
   - component: {fileID: 73349736}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: background4a
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -990,7 +990,7 @@ GameObject:
   - component: {fileID: 1784545779}
   - component: {fileID: 1784545778}
   - component: {fileID: 1784545777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: background4b
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1750,7 +1750,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ropeSpeed: 7
-  ropeLength: 0
+  maxRopeLength: 0
   direction: {x: 0, y: 0, z: 0}
   userBody: {fileID: 0}
   ropeAngle: 0
