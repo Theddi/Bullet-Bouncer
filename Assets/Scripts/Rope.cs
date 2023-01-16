@@ -66,12 +66,7 @@ public class Rope : MonoBehaviour
             ropeAngle *= direction.y < 0 ? 1 : -1;
             transform.Rotate(0,0,ropeAngle);
 
-            
-            offset = new Vector3(length/2, 0.0f, 0.0f);
-            // rotate around the z-axis
-            offset = Quaternion.AngleAxis(-ropeAngle+1, Vector3.back) * offset;
-
-            transform.position += offset;
+            Offset();
         }
 
         // makes it look a bit better: the rope is attached to the upper body
@@ -87,10 +82,9 @@ public class Rope : MonoBehaviour
         var length = transform.localScale.x;
 
         offset = new Vector3(length/2, 0.0f, 0.0f);
+        // using right vector since the rope prefab is horizontal
         offsetAngle = Vector2.Angle(Vector2.right, direction);
         offsetAngle *= direction.y < 0 ? 1 : -1;
-        // don't ask me why this is necessary
-        offsetAngle += 30; 
         // rotate around the z-axis
         offset = Quaternion.AngleAxis(offsetAngle, Vector3.back) * offset;
 

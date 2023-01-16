@@ -142,8 +142,8 @@ public class Player : Actor
             currentRopeShotDirection = currentRopeFaceDirection;
 
             // create and init the rope
-            var ropeAngle = Vector2.Angle(Vector2.up, currentRopeShotDirection);
-            ropeAngle *= currentRopeShotDirection.x < 0 ? 1 : -1;
+            var ropeAngle = Vector2.Angle(Vector2.right, currentRopeShotDirection);
+            ropeAngle *= currentRopeShotDirection.y > 0 ? 1 : -1;
 
             // the rope faces in the pressed direction
             playerRope = Instantiate(rope);
@@ -151,6 +151,7 @@ public class Player : Actor
             playerRope.transform.position = transform.position;
             playerRope.transform.Rotate(0,0,ropeAngle);
 
+            playerRope.GetComponent<Rope>().ropeAngle = ropeAngle;
             playerRope.GetComponent<Rope>().direction = new Vector3(currentRopeShotDirection.x, currentRopeShotDirection.y, 0);
             playerRope.GetComponent<Rope>().Offset();
             playerRope.GetComponent<Rope>().userBody = body;
