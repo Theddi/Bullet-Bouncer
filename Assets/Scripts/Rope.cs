@@ -21,7 +21,9 @@ public class Rope : MonoBehaviour
         Physics2D.IgnoreLayerCollision(4, 6);
     }
 
-    public float ropeSpeed;
+    public float extentionSpeed;
+
+    public float accelarationSpeed;
 
     public float maxRopeLength;
 
@@ -46,9 +48,9 @@ public class Rope : MonoBehaviour
         // termporarly disable collision for transformation phase
         GetComponent<Collider2D>().enabled = false;
 
-        if(!isHooked) Extend(ropeSpeed);
+        if(!isHooked) Extend(extentionSpeed);
         else {
-            Approach(hookPoint, ropeSpeed);
+            Approach(hookPoint, accelarationSpeed);
 
             // reset position and rotation
             transform.position = userBody.transform.position; 

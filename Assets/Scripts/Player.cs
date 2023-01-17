@@ -142,6 +142,8 @@ public class Player : Actor
             currentRopeShotDirection = currentRopeFaceDirection;
 
             // create and init the rope
+
+            // using right vector since the rope prefab is horizontal
             var ropeAngle = Vector2.Angle(Vector2.right, currentRopeShotDirection);
             ropeAngle *= currentRopeShotDirection.y > 0 ? 1 : -1;
 
