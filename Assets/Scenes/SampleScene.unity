@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 73349734}
   - component: {fileID: 73349733}
   - component: {fileID: 73349736}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: background4a
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1181,9 +1181,9 @@ GameObject:
   - component: {fileID: 1784545779}
   - component: {fileID: 1784545778}
   - component: {fileID: 1784545777}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: background4b
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1685,7 +1685,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
