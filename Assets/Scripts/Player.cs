@@ -41,7 +41,9 @@ public class Player : Actor
         controls.Gameplay.BulletShoot.performed += ctx => bulletPool.shootingActive = true;
         controls.Gameplay.BulletShoot.canceled += ctx => bulletPool.shootingActive = false;
 
-    }
+		InitiateActor(10f, 1f, 1f, 1f);
+        this.speed = 5f;
+	}
 
     void OnEnable()
     {
@@ -55,9 +57,7 @@ public class Player : Actor
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        bulletPool = GameObject.Find("Player_Bullet_Pool").GetComponent<BulletPool>();
-        initiateStats(5f, 1f, 1f, 1f);
-        this.speed = 5f;
+        bulletPool = transform.Find("bulletPool").GetComponent<BulletPool>();
     }
 
 
@@ -94,7 +94,6 @@ public class Player : Actor
         {
             HandleMovement();
             HandleRotation();
-            HandleDeath();
         }
     }
     protected override void HandleMovement()
@@ -114,12 +113,20 @@ public class Player : Actor
         }
     }
 
-    protected override void HandleDeath()
+	override public void TakeDamage(float damage)
+	{
+		//Debug.Log("took damage");
+		this.health -= damage * damageReduct;
+		if (health <= 0)
+		{
+			HandleDeath();
+		}
+	}
+
+	protected override void HandleDeath()
     {
-        if (health <= 0)
-        {
-            Time.timeScale = 0f;
-        }
+        Time.timeScale = 0f;
+        manager.GameOver();
     }
 
     
