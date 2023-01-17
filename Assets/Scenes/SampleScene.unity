@@ -1749,7 +1749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d86b88c3c62174aa33dad72fab2431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ropeSpeed: 7
+  extentionSpeed: 0
+  accelarationSpeed: 0
   maxRopeLength: 0
   direction: {x: 0, y: 0, z: 0}
   userBody: {fileID: 0}
