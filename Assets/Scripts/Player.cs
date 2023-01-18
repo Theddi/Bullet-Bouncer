@@ -41,12 +41,15 @@ public class Player : Actor
         controls.Gameplay.BulletShoot.performed += ctx => bulletPool.shootingActive = true;
         controls.Gameplay.BulletShoot.canceled += ctx => bulletPool.shootingActive = false;
 
-		InitiateActor(10f, 1f, 1f, 1f);
         this.speed = 5f;
+
+        // special death function
+        GetComponent<Damageable>().changeDeathFuntion(HandleDeath);
 	}
 
-    void OnEnable()
+    new void OnEnable()
     {
+        base.OnEnable();
         controls.Gameplay.Enable();
     }
     void OnDisable()
@@ -113,25 +116,15 @@ public class Player : Actor
         }
     }
 
-	override public void TakeDamage(float damage)
-	{
-		//Debug.Log("took damage");
-		this.health -= damage * damageReduct;
-		if (health <= 0)
-		{
-			HandleDeath();
-		}
-	}
-
-	protected override void HandleDeath()
+	protected void HandleDeath()
     {
         Time.timeScale = 0f;
         manager.GameOver();
     }
 
-    
-
-    
+    public float GetHealth(){
+        return GetComponent<Damageable>().GetHealth();
+    }
 
     Vector2 hitPoint = Vector2.zero;
     void ShootRope()
