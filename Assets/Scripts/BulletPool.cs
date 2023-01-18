@@ -35,9 +35,10 @@ public class BulletPool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeToNextSpawn -= Time.deltaTime;
         if (shootingActive) //Spawns a bullet when cannon is in shooting mode
         {
-            timeToNextSpawn -= Time.deltaTime;
+            
             if (timeToNextSpawn < 0)
             {
                 SpawnBullet();

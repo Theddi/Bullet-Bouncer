@@ -16,10 +16,10 @@ public class Turret : Actor
     {
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindObjectOfType<Player>();
-		InitiateActor(10f, 1f, 1f, 1f);
         this.speed = 0f;
         cannon = transform.Find("Cannon_Rotary_Axis");
 		shoot = transform.Find("bulletPool").GetComponent<BulletPool>();
+        GetComponent<Damageable>().changeDeathFuntion(HandleDeath);
 	}
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class Turret : Actor
         cannon.rotation = Quaternion.FromToRotation(Vector3.up, direction);
     }
 
-    protected override void HandleDeath()
+    protected void HandleDeath()
     {
         manager.IncreaseScore(100);
 		gameObject.SetActive(false);

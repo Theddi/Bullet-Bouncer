@@ -16,6 +16,10 @@ public class Bullet : MonoBehaviour
     [SerializeField] int bounces = 0;
     Vector2 lastVelocity;
 
+    public void OnEnable(){
+        bulletBody = GetComponent<Rigidbody2D>();
+    }
+
     private void Start()
     {
 		manager = FindObjectOfType<GameManager>();
@@ -55,12 +59,14 @@ public class Bullet : MonoBehaviour
         {//Collision with a wall shall reflect the bullet accordingly
             bulletBody.velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
         }
-        Actor col = collision.gameObject.GetComponent<Actor>();
-        if (col != null)
-        {//Collision with an actor shall inflict damage, and remove that bullet
-            if(col != owner.GetComponent<Actor>())
-            {//Only inflicts damage, if not own bullets
-                col.TakeDamage(owner.GetComponent<Actor>().DealDamage());
+        //Collision with a damageable shall inflict damage, and remove that bullet
+        Damageable damageable = collision.gameObject.GetComponent<Damageable>();
+        if (damageable != null)
+        {
+            //Only inflicts damage to bullets, that are not ones own
+            if(collision.gameObject.GetComponent<Actor>() != owner.GetComponent<Actor>())
+            {
+                damageable.TakeDamage(owner.GetComponent<Damageable>().DealDamage());
                 if(isPlayerBullet)
                 {//When the player hit another actor, increase score by 10
 					manager.IncreaseScore(10);
@@ -72,7 +78,8 @@ public class Bullet : MonoBehaviour
 
     public void Shoot()
     {//Set initial velocity of bullet when spawned
-        bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
+        if(bulletBody)
+            bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
     }
 
     public void setMaximumBounces(int max)
