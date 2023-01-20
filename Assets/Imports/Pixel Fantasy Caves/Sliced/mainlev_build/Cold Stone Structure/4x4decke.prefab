@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3217527957992959435}
   - component: {fileID: 4592156465731873094}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 4x4decke
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,10 @@ PrefabInstance:
     - target: {fileID: 7941881374809407054, guid: 74b7c463bcdcf7b428d1ef6aa42b6f0c, type: 3}
       propertyPath: m_Name
       value: mainlev_build_30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941881374809407054, guid: 74b7c463bcdcf7b428d1ef6aa42b6f0c, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 9071868764843253306, guid: 74b7c463bcdcf7b428d1ef6aa42b6f0c, type: 3}
       propertyPath: m_RootOrder
@@ -179,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_48
       objectReference: {fileID: 0}
+    - target: {fileID: 8530315340955170204, guid: f9a299f9c8d387a4aaf3561132b348a3, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a299f9c8d387a4aaf3561132b348a3, type: 3}
 --- !u!4 &6003465526997563643 stripped
@@ -196,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 2630272527264858596, guid: d33e76d65c0d49b4ab737f2a4a33af8e, type: 3}
       propertyPath: m_Name
       value: mainlev_build_29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2630272527264858596, guid: d33e76d65c0d49b4ab737f2a4a33af8e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4564138989904785159, guid: d33e76d65c0d49b4ab737f2a4a33af8e, type: 3}
       propertyPath: m_RootOrder
@@ -258,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 3026569291848605520, guid: 9c7b54086500dc843bdb184e6e0405e1, type: 3}
       propertyPath: m_Name
       value: mainlev_build_49
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026569291848605520, guid: 9c7b54086500dc843bdb184e6e0405e1, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5017248984856895118, guid: 9c7b54086500dc843bdb184e6e0405e1, type: 3}
       propertyPath: m_RootOrder

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3310446764489533354}
   - component: {fileID: 6904546723981277206}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1x2;2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,6 +119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_92
       objectReference: {fileID: 0}
+    - target: {fileID: 6710296409464736566, guid: 205e11968ba374642833077a4c495011, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205e11968ba374642833077a4c495011, type: 3}
 --- !u!4 &2645233170206271153 stripped
@@ -136,6 +140,10 @@ PrefabInstance:
     - target: {fileID: 636071461198212459, guid: f8fcdcc421000184ead455846f7f9242, type: 3}
       propertyPath: m_Name
       value: mainlev_build_124
+      objectReference: {fileID: 0}
+    - target: {fileID: 636071461198212459, guid: f8fcdcc421000184ead455846f7f9242, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5001862492925172527, guid: f8fcdcc421000184ead455846f7f9242, type: 3}
       propertyPath: m_RootOrder

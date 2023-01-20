@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3452607921062590847}
   m_Layer: 7
   m_Name: mainlev_build_24
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1959121826609956349}
   - component: {fileID: 1286236704863314839}
   - component: {fileID: 4555856199594668353}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: mainlev_build_492
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

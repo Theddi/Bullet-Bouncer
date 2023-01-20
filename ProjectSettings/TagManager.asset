@@ -14,7 +14,7 @@ TagManager:
   - UI
   - Rope
   - Wall
-  - 
+  - Background
   - 
   - 
   - 
@@ -42,6 +42,15 @@ TagManager:
   - name: Background
     uniqueID: 3628258543
     locked: 0
+  - name: Walls
+    uniqueID: 3336752125
+    locked: 0
+  - name: Background2
+    uniqueID: 727275885
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 2353492113
     locked: 0

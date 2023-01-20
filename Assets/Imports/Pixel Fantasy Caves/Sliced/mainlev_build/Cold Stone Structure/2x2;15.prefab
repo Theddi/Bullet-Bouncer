@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7011990705026066325}
   - component: {fileID: 282616806867357783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x2;15
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,10 @@ PrefabInstance:
     - target: {fileID: 2747560574735436012, guid: 1b5eed228d6f06449b683138327b88c5, type: 3}
       propertyPath: m_Name
       value: mainlev_build_472
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747560574735436012, guid: 1b5eed228d6f06449b683138327b88c5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7195149651670928455, guid: 1b5eed228d6f06449b683138327b88c5, type: 3}
       propertyPath: m_RootOrder
@@ -179,6 +183,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_459
       objectReference: {fileID: 0}
+    - target: {fileID: 5154066921138062249, guid: 23cfc5ef83e3c9048a69b43d80e0382b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23cfc5ef83e3c9048a69b43d80e0382b, type: 3}
 --- !u!4 &933036414012555116 stripped
@@ -196,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 3606772490940821210, guid: 3e0a978b0ed7f9a4c97007396e07dd30, type: 3}
       propertyPath: m_Name
       value: mainlev_build_458
+      objectReference: {fileID: 0}
+    - target: {fileID: 3606772490940821210, guid: 3e0a978b0ed7f9a4c97007396e07dd30, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8263276651989317238, guid: 3e0a978b0ed7f9a4c97007396e07dd30, type: 3}
       propertyPath: m_RootOrder
@@ -258,6 +270,10 @@ PrefabInstance:
     - target: {fileID: 4141690701090601748, guid: b34c9515d1978de4c8df3cbadbef7e67, type: 3}
       propertyPath: m_Name
       value: mainlev_build_473
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141690701090601748, guid: b34c9515d1978de4c8df3cbadbef7e67, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6433628017410510104, guid: b34c9515d1978de4c8df3cbadbef7e67, type: 3}
       propertyPath: m_RootOrder
