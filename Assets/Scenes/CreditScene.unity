@@ -413,8 +413,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -303}
-  m_SizeDelta: {x: 1000, y: 800}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1000, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603138933
 MonoBehaviour:
@@ -436,26 +436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Vielen Dank, dass du unseren Prototyp "Ninja Dwarf in a Wheelchair" gespielt
-    hast.
-
-    
-
-
-
-
-
-
-
-
-    Beteiligt an der Entwicklung des Spiels waren:
-
-    Dominic
-    Ludorff
-
-    Linus Rattay
-
-    Lucas Kiesel'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -518,7 +499,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.000061035156, y: 0, z: 0, w: 593.1945}
+  m_margin: {x: 0.000061035156, y: -4.0904083, z: 0, w: 196.42123}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -544,6 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f1e4add24c6e74aba793400265cf65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textFile: {fileID: 4900000, guid: 0c73c056c0d80c24392b9a35c3588f75, type: 3}
 --- !u!1 &2026607126
 GameObject:
   m_ObjectHideFlags: 0
