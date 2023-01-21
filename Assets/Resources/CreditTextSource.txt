@@ -1,0 +1,14 @@
+Vielen Dank, dass du unseren Prototyp "Ninja Dwarf in a Wheelchair" gespielt hast.
+
+Beteiligt an der Entwicklung des Spiels waren:
+
+Dominic Ludorff
+Linus Rattay
+Lucas Kiesel
+
+Zudem möchten wir auf einige von uns genutzten Assets verweisen:
+
+Pixel Fantasy Caves - Szadi Art. - Unity Asset Store
+Simple Fade Scene Transition System - negleft - Unity Asset Store
+Sprites To Prefabs - DietChugg LLC - Unity Asset Store
+Bat sprite - bagzie - OpenGameArt.org

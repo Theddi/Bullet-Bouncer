@@ -15,7 +15,7 @@ public class SceneFader : MonoBehaviour
     {
         if (Input.anyKey)
         {
-			Initiate.Fade("SampleScene", Color.black, .5f);
+			Initiate.Fade("CreditScene", Color.black, .5f);
 		}
     }
 }
