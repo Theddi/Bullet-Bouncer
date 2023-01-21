@@ -23,6 +23,8 @@ public class Elevator : MonoBehaviour
 
     private float timeUntilRestart = 0;
 
+    private bool playerLost = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,8 @@ public class Elevator : MonoBehaviour
             Collider2D collider = GetComponent<Collider2D>();
             if(collider == null) return;
 
+            if(PlayerOnTop()) playerLost = false;
+
             Vector3 direction = targetPoint - startPoint;
 
             transform.position += direction * speed * Time.deltaTime;
@@ -99,7 +103,14 @@ public class Elevator : MonoBehaviour
                 Vector3 temp = targetPoint;
                 targetPoint = startPoint;
                 startPoint = temp;
-                active = false;
+                if(onlyMoveOnce){
+                    if(!playerLost) active = false;
+                    else { 
+                        playerLost = false;
+                        lastTimePlayerLost = true;
+                    }
+                }else active = false;
+                
                 timeUntilRestart = Time.time + cooldown;
                 moved = true;
                 return;
@@ -125,10 +136,12 @@ public class Elevator : MonoBehaviour
 
     private bool moved = false;
 
+    private bool lastTimePlayerLost = false;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
-        // ignore everything after the elevatpr moved once
-        if(onlyMoveOnce && moved) return;
+        // ignore everything after the elevator moved once (exept if the player was lost in the process)
+        if(onlyMoveOnce && moved && !lastTimePlayerLost) return;
 
         // ignore everything until cooldown is over
         bool onCooldown = timeUntilRestart != 0 && Time.time < timeUntilRestart;
@@ -138,7 +151,17 @@ public class Elevator : MonoBehaviour
         
         if(collisionObject.tag == "Player"){
  
-            if(PlayerOnTop()) active = true;
+            if(PlayerOnTop()) {
+                active = true;
+                lastTimePlayerLost = false;
+                playerLost = false;
+            }
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision){
+        if(onlyMoveOnce && collision.gameObject.tag == "Player" && active) {
+            playerLost = true;
         }
     }
 }
