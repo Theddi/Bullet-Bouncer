@@ -10,8 +10,8 @@ public class BulletPool : MonoBehaviour
     public GameObject owner;
     List<GameObject> bullePool;
     [SerializeField] int activeBullets = 0;
-    int initialBulletCount = 100;
-    int bullePoolIncrement = 20;
+    int initialBulletCount = 25;
+    int bullePoolIncrement = 5;
     [SerializeField] float cooldown = .5f;
     float timeToNextSpawn;
     [SerializeField] public bool shootingActive = false;
@@ -38,7 +38,6 @@ public class BulletPool : MonoBehaviour
         timeToNextSpawn -= Time.deltaTime;
         if (shootingActive) //Spawns a bullet when cannon is in shooting mode
         {
-            
             if (timeToNextSpawn < 0)
             {
                 SpawnBullet();
@@ -51,9 +50,10 @@ public class BulletPool : MonoBehaviour
     {
         // create a new object, deactivate it and assign its parent transform to the spawner
         var bt = Instantiate<GameObject>(bullet);
+		bt.GetComponent<Bullet>().owner = this.owner;
+        bt.GetComponent<Bullet>().isPlayerBullet = (this.owner.GetComponent<Player>() != null);
 		InititBulletForOwner(bt);
-        bt.SetActive(false);
-        bt.GetComponent<Bullet>().owner = this.owner;
+		bt.SetActive(false);
         return bt;
     }
     void InititBulletForOwner(GameObject bt)
@@ -82,10 +82,10 @@ public class BulletPool : MonoBehaviour
 
         // get the first deactivated object and activate it
         var currentBT = bullePool[activeBullets];
-        currentBT.SetActive(true);
-        
-        // put the bullet slightly in the background so that raycasts won't detect it
-        Vector3 spawnPos = new Vector3(origin.transform.position[0], origin.transform.position[1], -0.1f);
+		currentBT.SetActive(true);
+
+		// put the bullet slightly in the background so that raycasts won't detect it
+		Vector3 spawnPos = new Vector3(origin.transform.position[0], origin.transform.position[1], -0.1f);
         currentBT.transform.SetPositionAndRotation(spawnPos, origin.transform.rotation);
         currentBT.GetComponent<Bullet>().Shoot();
 

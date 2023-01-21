@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     GameManager manager;
 	public GameObject owner;
-    bool isPlayerBullet = false;
+    public bool isPlayerBullet = false;
 
     Rigidbody2D bulletBody;
     static int id = 0;
@@ -16,16 +16,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] int bounces = 0;
     Vector2 lastVelocity;
 
-    public void OnEnable(){
-        bulletBody = GetComponent<Rigidbody2D>();
-    }
+    public void OnEnable()
+    {
+		bulletBody = GetComponent<Rigidbody2D>();
+	}
 
     private void Start()
     {
 		manager = FindObjectOfType<GameManager>();
+		bulletId = id++;
 		bulletBody = GetComponent<Rigidbody2D>();
-        bulletId = id++;
-        isPlayerBullet = (owner.GetComponent<Player>() != null);
 	}
     // Update is called once per frame
     void Update()
@@ -44,6 +44,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Bullet bulletCollision = collision.gameObject.GetComponent<Bullet>();
+        //Debug.Log(collision.gameObject);
 		if (bulletCollision == null)
         {//Collision with everything except another Bullet, increases Bounces
             ++bounces;
@@ -78,8 +79,17 @@ public class Bullet : MonoBehaviour
 
     public void Shoot()
     {//Set initial velocity of bullet when spawned
-        if(bulletBody)
-            bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
+        if (bulletBody)
+        {
+            if (isPlayerBullet)
+            {
+				bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
+			} else
+            {
+				bulletBody.velocity = bulletBody.transform.right * bulletSpeed;
+			}
+        }
+            
     }
 
     public void setMaximumBounces(int max)

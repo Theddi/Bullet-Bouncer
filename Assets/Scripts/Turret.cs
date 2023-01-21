@@ -10,6 +10,7 @@ public class Turret : Actor
     BulletPool shoot;
 	Vector2 direction = Vector2.zero;
     float targetRange = 1000f;
+    float motionDegree = 125f;
 
 	// Start is called before the first frame update
 	void Start()
@@ -29,9 +30,8 @@ public class Turret : Actor
         HandleMovement();
         if (direction.sqrMagnitude < targetRange)
         {
-			shoot.shootingActive= true;
             HandleRotation();
-        } else {
+        } else {// don't shoot when out of range
 			shoot.shootingActive = false;
 		}
     }
@@ -43,8 +43,15 @@ public class Turret : Actor
 
     protected override void HandleRotation()
     {
-        cannon.rotation = Quaternion.FromToRotation(Vector3.up, direction);
-    }
+        Quaternion newRotation = Quaternion.FromToRotation(Vector3.up, direction);
+        if(Math.Abs(newRotation.eulerAngles.z) < motionDegree)
+		{
+			cannon.rotation = newRotation;
+			shoot.shootingActive = true;
+		} else {// don't shoot when at too high angle
+			shoot.shootingActive = false;
+		}
+	}
 
     protected void HandleDeath()
     {

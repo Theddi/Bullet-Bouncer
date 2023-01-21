@@ -22,6 +22,9 @@ public class CollisionDamager : MonoBehaviour
         if(damageable != null){
             damageable.TakeDamage(1);
 
+            // this object killed the collisionObject with the last damage call
+            if(collisionObject == null) return;
+
             // objects with rigitbodies are pushed away
             Rigidbody2D collisionBody = collisionObject.GetComponent<Rigidbody2D>();
             if(collisionBody != null){
