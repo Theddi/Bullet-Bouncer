@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750ad21c7b499354eb2c905000eb966b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 2
   baseDamage: 1
   damageMulti: 1
   damageReduct: 1
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a6ac66c074cf74ea7a9bae546c0066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetDistance: 15
+  targetRange: 15
   approachSpeed: 1
 --- !u!50 &-5636904966194498438
 Rigidbody2D:

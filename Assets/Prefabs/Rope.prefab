@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 358814322851418216}
   - component: {fileID: 1079743712590827879}
   - component: {fileID: -4644615421226022997}
+  - component: {fileID: 146228691511117518}
   m_Layer: 6
   m_Name: Rope
   m_TagString: Untagged
@@ -146,3 +147,14 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!210 &146228691511117518
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785669674868013982}
+  m_Enabled: 1
+  m_SortingLayerID: -1941475183
+  m_SortingLayer: 1
+  m_SortingOrder: 0
