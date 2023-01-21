@@ -18,7 +18,8 @@ public class Turret : Actor
         body = GetComponent<Rigidbody2D>();
         target = GameObject.FindObjectOfType<Player>();
         this.speed = 0f;
-        cannon = transform.Find("Cannon_Rotary_Axis");
+		Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), gameObject.GetComponent<Collider2D>());
+		cannon = transform.Find("RotationalAxis");
 		shoot = transform.Find("bulletPool").GetComponent<BulletPool>();
         GetComponent<Damageable>().changeDeathFuntion(HandleDeath);
 	}

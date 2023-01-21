@@ -50,18 +50,18 @@ public class BulletPool : MonoBehaviour
     {
         // create a new object, deactivate it and assign its parent transform to the spawner
         var bt = Instantiate<GameObject>(bullet);
-		bt.GetComponent<Bullet>().owner = this.owner;
-        bt.GetComponent<Bullet>().isPlayerBullet = (this.owner.GetComponent<Player>() != null);
+		bt.GetComponent<Bullet>().owner = owner;
+        bt.GetComponent<Bullet>().isPlayerBullet = (owner.GetComponent<Player>() != null);
 		InititBulletForOwner(bt);
 		bt.SetActive(false);
         return bt;
     }
     void InititBulletForOwner(GameObject bt)
     {// Initiates the bullet, depending on the owner of the bullet
-        if (this.owner.GetComponent<Turret>())
+        if (owner.GetComponent<Turret>())
         {
             bt.GetComponent<Bullet>().setMaximumBounces(1);
-        } else if(!this.owner.GetComponent<Player>())
+        } else if(!owner.GetComponent<Player>())
 		{//Make big, because visible effect for undefined bullet
 			bt.transform.localScale = new Vector3(2f, 2f, 1f); 
         }

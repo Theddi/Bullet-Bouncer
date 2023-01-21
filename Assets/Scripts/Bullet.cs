@@ -19,6 +19,9 @@ public class Bullet : MonoBehaviour
     public void OnEnable()
     {
 		bulletBody = GetComponent<Rigidbody2D>();
+        if (owner != null ) {
+			Physics2D.IgnoreCollision(GetComponent<Collider2D>(), owner.GetComponent<Collider2D>());
+		}
 	}
 
     private void Start()
@@ -44,11 +47,13 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Bullet bulletCollision = collision.gameObject.GetComponent<Bullet>();
-        //Debug.Log(collision.gameObject);
 		if (bulletCollision == null)
         {//Collision with everything except another Bullet, increases Bounces
-            ++bounces;
-        } else {
+            if(owner != collision.gameObject)
+            {
+				++bounces;
+			}
+		} else {
             if(owner != bulletCollision.owner && isPlayerBullet)
             {//Increase score by 1 for a bullet collision, of different owners
 				manager.IncreaseScore(1);
@@ -59,7 +64,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.GetComponent<Wall>() != null)
         {//Collision with a wall shall reflect the bullet accordingly
             bulletBody.velocity = Vector2.Reflect(lastVelocity, collision.contacts[0].normal);
-        }
+		}
         //Collision with a damageable shall inflict damage, and remove that bullet
         Damageable damageable = collision.gameObject.GetComponent<Damageable>();
         if (damageable != null)
@@ -74,7 +79,7 @@ public class Bullet : MonoBehaviour
 				}
 				DestroyBullet();
 			}
-        }
+		}
     }
 
     public void Shoot()
