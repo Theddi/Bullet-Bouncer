@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 35093
+  controlID: 3253
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 35230
+  controlID: 3258
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 35231
+  controlID: 3259
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -426,10 +426,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 3483}
+      scrollPos: {x: 0, y: 32}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 027afdff067afdffee8afdff468bfdff24fdfdff28fdfdff9419feffb619feffe0e2feff2ae5feff20e9feff76e9feffd6ebfeff8641ffff4a42ffffcc42ffff9445ffff8c84ffff9084ffff5a8bffffae8bffffb28bffffbe96ffff1697ffff569affff329effff369effffc69fffff2aa0fffff8dfffff1ae0ffff3af1ffffde7200000075000064760000da050200022b0200284302000e59020052620200
+      m_ExpandedIDs: 86e2ffff8ae2ffff0afbffffe6640000226a0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -700,9 +700,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 69.66495, y: -9.698836, z: 3.1856084}
+    m_Target: {x: 53.838783, y: -46.11698, z: 2.7810016}
     speed: 2
-    m_Value: {x: 69.66495, y: -9.698836, z: 3.1856084}
+    m_Value: {x: 53.838783, y: -46.11698, z: 2.7810016}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -753,9 +753,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 22.160833
+    m_Target: 2.8582194
     speed: 2
-    m_Value: 22.160833
+    m_Value: 2.8582194
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -821,22 +821,22 @@ MonoBehaviour:
     m_SkipHidden: 1
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Imports/Pixel Fantasy Caves/Sliced/mainlev_build/Cold Stone Structure
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Imports/Pixel Fantasy Caves/Sliced/mainlev_build/Cold Stone Structure
   m_LastFoldersGridSize: 96
   m_LastProjectPath: F:\Spieleentwicklung\Bullet-Bouncer
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 1e960000
-    m_LastClickedID: 38430
-    m_ExpandedIDs: 00000000c2950000c4950000c6950000c8950000ca950000cc950000ce95000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: f4910000
+    m_LastClickedID: 37364
+    m_ExpandedIDs: 00000000a8910000aa910000ac910000ae910000b0910000b2910000b491000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -864,7 +864,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c2950000c4950000c6950000c8950000ca950000cc950000ce95000000ca9a3bffffff7f
+    m_ExpandedIDs: 00000000a8910000aa910000ac910000ae910000b0910000b2910000b491000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -916,7 +916,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 53}
     m_GridSize: 96
   m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 317
@@ -1153,7 +1153,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -161646
+  m_LastSelectedObjectID: -40494
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
