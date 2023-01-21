@@ -67,6 +67,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 975656193276803957}
     m_Modifications:
+    - target: {fileID: 2869361845584891880, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 4697420989080040667, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
       propertyPath: m_Name
       value: mainlev_build_396
@@ -185,6 +189,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 9071875832285266596, guid: 2025462b6f18c2c4685ee82ca22103ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2025462b6f18c2c4685ee82ca22103ac, type: 3}
 --- !u!4 &7386163978532798148 stripped

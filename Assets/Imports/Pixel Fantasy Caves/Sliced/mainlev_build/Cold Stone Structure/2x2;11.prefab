@@ -121,6 +121,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3070599188717664634, guid: 9a320ab154bea0640ba52286b9a06e48, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a320ab154bea0640ba52286b9a06e48, type: 3}
 --- !u!4 &3953774308814869530 stripped
@@ -187,6 +191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5089818922117673912, guid: 023d2702bbde0a54ebe1c1c01e961223, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 023d2702bbde0a54ebe1c1c01e961223, type: 3}
 --- !u!4 &198598655192957036 stripped
@@ -209,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 5211595047447873282, guid: 5d41ec571a483144b9e20449860bd393, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 7711986058606741318, guid: 5d41ec571a483144b9e20449860bd393, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -275,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3594101811096182785, guid: 9831f41f1d4f1f84da020bbce4d01e93, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 7634278581974646376, guid: 9831f41f1d4f1f84da020bbce4d01e93, type: 3}
       propertyPath: m_RootOrder
       value: 1

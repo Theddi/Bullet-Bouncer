@@ -69,6 +69,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5223767654183586028}
     m_Modifications:
+    - target: {fileID: 981475185363901301, guid: 2c108e0b14c4bea4da8356ab6ba504ea, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 2283232854779759883, guid: 2c108e0b14c4bea4da8356ab6ba504ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -187,6 +191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7232826960235551325, guid: 869eb464eb0cf00418cb3f6d1d9ebbe1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 869eb464eb0cf00418cb3f6d1d9ebbe1, type: 3}
 --- !u!4 &6061336642318724585 stripped
@@ -245,6 +253,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5568818916641192382, guid: b0154f25b331cff499fcbaafd50f4095, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 7346410295366123786, guid: b0154f25b331cff499fcbaafd50f4095, type: 3}
       propertyPath: m_Name
       value: mainlev_build_129
@@ -267,6 +279,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5223767654183586028}
     m_Modifications:
+    - target: {fileID: 3050252273406145875, guid: 1f2fa6c529f9f1945a358eca16db6eb8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 5051995672637666911, guid: 1f2fa6c529f9f1945a358eca16db6eb8, type: 3}
       propertyPath: m_Name
       value: mainlev_build_128
