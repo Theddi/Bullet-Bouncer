@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3297085857962483547}
   - component: {fileID: 3210221408440728320}
+  - component: {fileID: 7371227969101841302}
   m_Layer: 0
   m_Name: Fahrstuhlplatform
   m_TagString: Untagged
@@ -64,6 +65,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &7371227969101841302
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917854024758960487}
+  m_Enabled: 1
+  m_SortingLayerID: -1941475183
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!1001 &1555824396221364695
 PrefabInstance:
   m_ObjectHideFlags: 0
