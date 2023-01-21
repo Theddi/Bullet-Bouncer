@@ -19,4 +19,10 @@ public class BackgroundImageScale : MonoBehaviour
     {
         
     }
+
+    protected void HandleDeath()
+    {
+        gameObject.SetActive(false);
+        enabled = false;
+    }
 }

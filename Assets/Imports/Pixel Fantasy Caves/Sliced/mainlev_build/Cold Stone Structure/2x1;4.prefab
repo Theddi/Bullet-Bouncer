@@ -115,6 +115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6180376666978212866, guid: 03cc99f5e4efb3d40a43cd8f7c69101f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 8650798734950826270, guid: 03cc99f5e4efb3d40a43cd8f7c69101f, type: 3}
       propertyPath: m_Name
       value: mainlev_build_105
@@ -145,6 +149,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6012495174243684273, guid: 0f853f0c09505ee41b7138aaa4c4aff5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 6217462726977376961, guid: 0f853f0c09505ee41b7138aaa4c4aff5, type: 3}
       propertyPath: m_RootOrder
       value: 1

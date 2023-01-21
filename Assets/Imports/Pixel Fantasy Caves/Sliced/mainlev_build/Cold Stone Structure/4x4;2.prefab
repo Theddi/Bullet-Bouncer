@@ -73,6 +73,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2607771810601836622}
     m_Modifications:
+    - target: {fileID: 2268963476822588869, guid: f032c9d3dbbcda64c9a22fd68ab520e2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 2953658751541599083, guid: f032c9d3dbbcda64c9a22fd68ab520e2, type: 3}
       propertyPath: m_Name
       value: mainlev_build_122
@@ -139,6 +143,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2607771810601836622}
     m_Modifications:
+    - target: {fileID: 850869294586822500, guid: 422a7d212407ced4d94f1dade89ef3b2, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 5858304037601241683, guid: 422a7d212407ced4d94f1dade89ef3b2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -213,6 +221,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6194446346356629761, guid: 037d44e3efaa5f34d9bdcb94ef4a2ea7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 7260862771245223541, guid: 037d44e3efaa5f34d9bdcb94ef4a2ea7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -315,6 +327,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3185135639406338474, guid: cb3fda6ca16753d4297af03e435a4f2e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 5723133721387085993, guid: cb3fda6ca16753d4297af03e435a4f2e, type: 3}
       propertyPath: m_Name
       value: mainlev_build_121

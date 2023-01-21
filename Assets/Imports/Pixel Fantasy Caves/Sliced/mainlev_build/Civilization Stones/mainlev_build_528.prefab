@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4498704403558181011}
   - component: {fileID: 6462667414451318896}
+  - component: {fileID: 873114433417752045}
   m_Layer: 0
   m_Name: mainlev_build_528
   m_TagString: Untagged
@@ -84,3 +85,14 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!210 &873114433417752045
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120904749409563663}
+  m_Enabled: 1
+  m_SortingLayerID: -958215171
+  m_SortingLayer: -2
+  m_SortingOrder: 0

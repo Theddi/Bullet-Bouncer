@@ -67,6 +67,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4733809925999568756}
     m_Modifications:
+    - target: {fileID: 2819934746144899588, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 3086986070992045712, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
       propertyPath: m_Name
       value: mainlev_build_65
@@ -133,6 +137,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4733809925999568756}
     m_Modifications:
+    - target: {fileID: 351985709813911718, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 1931018489577385015, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
       propertyPath: m_RootOrder
       value: 1
