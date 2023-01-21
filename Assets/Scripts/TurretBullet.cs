@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class TurretBullet : MonoBehaviour
 {
     GameManager manager;
 	public GameObject owner;
     public bool isPlayerBullet = false;
+    public GameObject target;
 
     Rigidbody2D bulletBody;
     static int id = 0;
@@ -16,9 +17,17 @@ public class Bullet : MonoBehaviour
     [SerializeField] int bounces = 0;
     Vector2 lastVelocity;
 
+    float turretX;
+    float targetX;
+    float dist;
+    float nextX;
+    float baseY;
+    float height;
+
     public void OnEnable()
     {
 		bulletBody = GetComponent<Rigidbody2D>();
+		target = GameObject.Find("Player");
 	}
 
     private void Start()
@@ -30,7 +39,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lastVelocity = bulletBody.velocity;
         if (bounces >= maximumBounces)
         {//On maximum bounces the bullet shall be removed
 			if(isPlayerBullet)
@@ -39,6 +47,19 @@ public class Bullet : MonoBehaviour
 			}
 			DestroyBullet();
 		}
+        dist = targetX - turretX;
+        nextX = Mathf.MoveTowards(transform.position.x, targetX, bulletSpeed * Time.deltaTime);
+        baseY = Mathf.Lerp(owner.transform.position.y, target.transform.position.y, (nextX - turretX) / dist);
+        height = 2 * (nextX - turretX) * (float)((nextX - targetX) / (-0.25 * dist * dist));
+
+        Vector3 movePosition = new Vector3(nextX, baseY + height, transform.position.z);
+        transform.rotation = LookAtTarget(movePosition - transform.position);
+        transform.position = movePosition;
+    }
+
+    public static Quaternion LookAtTarget(Vector2 rotation)
+    {
+        return Quaternion.Euler(0,0, Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -81,14 +102,9 @@ public class Bullet : MonoBehaviour
     {//Set initial velocity of bullet when spawned
         if (bulletBody)
         {
-            if (isPlayerBullet)
-            {
-				bulletBody.velocity = bulletBody.transform.up * bulletSpeed;
-			} else
-            {
-				bulletBody.velocity = bulletBody.transform.right * bulletSpeed;
-			}
-        }
+			turretX = transform.position.x;
+			targetX = target.transform.position.x;
+		}
             
     }
 
