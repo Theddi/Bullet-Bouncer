@@ -42,6 +42,8 @@ public class Rope : MonoBehaviour
 
     public Vector3 hookPoint = Vector3.zero;
 
+    public float errorTolerance = 2;
+
     // Update is called once per frame
     void Update()
     {
@@ -127,17 +129,38 @@ public class Rope : MonoBehaviour
         if(collision.gameObject.tag == "Wall"){
 
             Vector3 tempHookPoint = collision.GetContact(0).point;
+            Vector2 tempHookPoint2D = new Vector2(tempHookPoint.x, tempHookPoint.y);
+
+            // find all collision on the way to the collision point
+            Vector2 pos2D = new Vector2(transform.position.x, transform.position.y);
+            Vector2 hitDirection = tempHookPoint2D - pos2D;
+            RaycastHit2D[] allHits = Physics2D.RaycastAll(pos2D, direction, hitDirection.magnitude);
+            foreach(RaycastHit2D hit in allHits){
+                // ignore hitting itself
+                if(hit.transform == transform) continue;
+
+                if(hit.transform.tag == "Wall"){
+                    // only save the closest wall hit
+                    tempHookPoint = hit.point;
+
+                }else if(hit.transform.tag == "Spike"){
+                    GameObject.Destroy(gameObject);
+                
+                // ignore everything else
+                } else continue;
+                
+            }
 
             // only set the hookpoint once
             if(!isHooked){
                 isHooked = true;
                 hookPoint = tempHookPoint;
+            }else{
+                float distance = (tempHookPoint - hookPoint).magnitude;
+                if(distance > errorTolerance){
+                    GameObject.Destroy(gameObject);
+                }
             }
-
-            // rope is broken because something pierced the middle
-            float distanceToHookPoint = (tempHookPoint - userBody.transform.position).magnitude;
-            var length = transform.localScale.x;
-            if(distanceToHookPoint * 1.1f < length) GameObject.Destroy(gameObject); // 10% errorspan to make this filter more lenient
             
         }
     }
