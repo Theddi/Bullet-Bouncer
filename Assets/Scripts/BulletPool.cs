@@ -52,7 +52,6 @@ public class BulletPool : MonoBehaviour
         var bt = Instantiate<GameObject>(bullet);
 		bt.GetComponent<Bullet>().owner = owner;
         bt.GetComponent<Bullet>().isPlayerBullet = (owner.GetComponent<Player>() != null);
-		Physics2D.IgnoreCollision(bt.GetComponent<Collider2D>(), owner.GetComponent<Collider2D>());
 		InititBulletForOwner(bt);
 		bt.SetActive(false);
         return bt;
