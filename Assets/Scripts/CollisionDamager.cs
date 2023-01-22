@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class CollisionDamager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private GameObject collisionObject;
+
+    public float damageAmount = 1;
 
     // continue to damage the colliding object
     void Update()
@@ -20,7 +17,7 @@ public class CollisionDamager : MonoBehaviour
         Damageable damageable = collisionObject.GetComponent<Damageable>();
 
         if(damageable != null){
-            damageable.TakeDamage(1);
+            damageable.TakeDamage(damageAmount);
 
             // this object killed the collisionObject with the last damage call
             if(collisionObject == null) return;
