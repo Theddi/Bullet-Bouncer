@@ -44,11 +44,29 @@ TagManager:
   - name: Background
     uniqueID: 3628258543
     locked: 0
+  - name: Dark
+    uniqueID: 4159816975
+    locked: 0
   - name: Walls
     uniqueID: 3336752125
     locked: 0
   - name: Background2
     uniqueID: 727275885
+    locked: 0
+  - name: background2fix
+    uniqueID: 755123789
+    locked: 0
+  - name: Civilisation
+    uniqueID: 1848451401
+    locked: 0
+  - name: Elevator
+    uniqueID: 1212007853
+    locked: 0
+  - name: Spikes
+    uniqueID: 490809331
+    locked: 0
+  - name: DarkWall
+    uniqueID: 4078756321
     locked: 0
   - name: Default
     uniqueID: 0

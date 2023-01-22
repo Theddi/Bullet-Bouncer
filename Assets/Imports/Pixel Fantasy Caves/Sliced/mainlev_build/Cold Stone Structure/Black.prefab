@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 207692940572887089}
   - component: {fileID: 5697209361635464688}
+  - component: {fileID: 794120777363886348}
   m_Layer: 7
   m_Name: Black
   m_TagString: Wall
@@ -62,6 +63,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!210 &794120777363886348
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7622286469482906620}
+  m_Enabled: 1
+  m_SortingLayerID: -216210975
+  m_SortingLayer: -4
+  m_SortingOrder: 0
 --- !u!1001 &1675181585719886352
 PrefabInstance:
   m_ObjectHideFlags: 0

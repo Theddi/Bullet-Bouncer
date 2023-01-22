@@ -10,12 +10,13 @@ public class PlayerApproacher : MonoBehaviour
     public float approachSpeed = 1;
 
     GameObject player;
+    public AudioSource audioWhenApproaching;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectsWithTag("Player")[0];
-    }
+	}
 
     public static bool PlayerInSight(Transform transform, float targetRange){
         
@@ -32,6 +33,7 @@ public class PlayerApproacher : MonoBehaviour
 
             // first hit is the player ? (aside from the object itself)
             if(hit.transform.tag == "Player"){
+
                 return true;
 
             // someting is in the way
@@ -60,10 +62,14 @@ public class PlayerApproacher : MonoBehaviour
 
         // only target when in sight (no obstacles in the way)
         if(PlayerInSight(transform, targetRange))
-            body.velocity += (new Vector2(direction.x, direction.y)) * approachSpeed * Time.deltaTime;
-            
-
-            
-        
+        {
+			body.velocity += (new Vector2(direction.x, direction.y)) * approachSpeed * Time.deltaTime;
+            if (audioWhenApproaching != null)
+                audioWhenApproaching.mute = false;
+		} else
+        {
+			if (audioWhenApproaching != null)
+				audioWhenApproaching.mute = true;
+		}
     }
 }

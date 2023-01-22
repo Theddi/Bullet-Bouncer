@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6819553603570851115}
   - component: {fileID: 7128642060642334552}
+  - component: {fileID: -7779838750047538975}
   m_Layer: 0
   m_Name: Stone Bottom 2
   m_TagString: Untagged
@@ -61,6 +62,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!210 &-7779838750047538975
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2460504135825333457}
+  m_Enabled: 1
+  m_SortingLayerID: -958215171
+  m_SortingLayer: -2
+  m_SortingOrder: 0
 --- !u!1001 &2150313428437913084
 PrefabInstance:
   m_ObjectHideFlags: 0
