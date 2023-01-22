@@ -6,7 +6,6 @@ using TMPro;
 using System;
 using UnityEngine.UIElements;
 using Unity.VisualScripting;
-
 public class GameManager : MonoBehaviour
 {
 	// Reference
@@ -16,6 +15,9 @@ public class GameManager : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text crystalCountText;
     public GameObject gameOverPanel;
+    public GameObject pausePanel;
+	public UnityEngine.UI.Button resumeButton, quitButton;
+
 	readonly float scoreTickValue = 2f;
 	float scoreTicker;
 
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour
 	void Start()
 	{
 		Time.timeScale = 1;
+		resumeButton.onClick.AddListener(TriggerPause);
+		quitButton.onClick.AddListener(Quit);
+
 		health = playerInstance.GetHealth(); // Number of elements as of player health points
 		healthMax = playerInstance.GetHealth();
 
@@ -71,6 +76,7 @@ public class GameManager : MonoBehaviour
 		}
 		crystalCountText.text = crystalCount+"/"+crystalWinAmount;
 		UpdateHealth(playerInstance.GetHealth());
+
 	}
 	public void IncreaseScore(int scoreAddition)
     { 
@@ -97,11 +103,28 @@ public class GameManager : MonoBehaviour
 		gameOverPanel.SetActive(true);
 	}
 
+	public void TriggerPause()
+	{
+		if (!pausePanel.activeSelf) {
+			Time.timeScale = 0;
+			pausePanel.SetActive(true);
+		} else
+		{
+			Time.timeScale = 1;
+			pausePanel.SetActive(false);
+		}
+		
+	}
+
 	public void IncreaseCrystalCount(int amount){
 		if(amount < 0) Debug.LogWarning("Decreasing Crystal count by " + amount);
 		crystalCount += amount;
 		playerAudio.PlayOneShot(crystalCollectClip);
 		if (crystalCount >= crystalWinAmount) Win();
+	}
+	public void Quit()
+	{
+		Initiate.Fade("MainScreen", Color.black, .5f);
 	}
 
 	public void Win(){

@@ -8,7 +8,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : Actor
 {
-    PlayerControls controls;
+	GameManager manager;
+
+	PlayerControls controls;
     PlayerInput input;
 
     // Shoot interaction
@@ -28,11 +30,15 @@ public class Player : Actor
     
     void Awake()
     {
-        controls = new PlayerControls();
+		manager = FindObjectOfType<GameManager>();
+		controls = new PlayerControls();
         input = GetComponent<PlayerInput>();
 
-        // Rope & Movement
-        controls.Gameplay.RopeShoot.performed += ctx => ShootRope();
+		//Menu
+		controls.Gameplay.Menu.performed += ctx => manager.TriggerPause();
+
+		// Rope & Movement
+		controls.Gameplay.RopeShoot.performed += ctx => ShootRope();
         controls.Gameplay.RopeShoot.canceled += ctx => CancelRope();
         controls.Gameplay.Move.performed += ctx => currentRopeFaceDirection = ctx.ReadValue<Vector2>(); // store the direction to move in when shooting rope next time
         controls.Gameplay.Move.canceled += ctx => currentRopeFaceDirection = Vector2.zero; // no direction to move in when no direction is pressed
