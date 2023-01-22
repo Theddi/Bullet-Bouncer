@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
 	}
 
 	public void Win(){
+		Time.timeScale = 0;
 		Initiate.Fade("CreditScene", Color.black, .5f);
 	}
 }
