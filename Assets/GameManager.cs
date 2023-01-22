@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
 
 	void Start()
 	{
+		Time.timeScale = 1;
 		health = playerInstance.GetHealth(); // Number of elements as of player health points
 		healthMax = playerInstance.GetHealth();
 
@@ -78,6 +79,7 @@ public class GameManager : MonoBehaviour
 
 	public void UpdateHealth(float health)
 	{
+		float positiveHealth = health > 0 ? health : 0;
 		RectTransform healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
 		healthBar.sizeDelta = new Vector2(healthbarMaxX * (health/healthMax), healthbarMaxY);
 	}
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour
 
 	public void GameOver()
 	{
+		Time.timeScale = 0;
 		gameOverPanel.SetActive(true);
 	}
 
