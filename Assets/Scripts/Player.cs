@@ -109,12 +109,21 @@ public class Player : Actor
     protected override void HandleRotation()
     {
         if(currentShotFaceDirection.sqrMagnitude > 0.02)
-        {
-            angle = Vector2.Angle(Vector2.up, currentShotFaceDirection);
-            angle *= currentShotFaceDirection.x < 0 ? 1 : -1;
-			arm.eulerAngles = new Vector3(0, 0, angle);
+        {   
+            // calculate shooting angle and move the arm accordingly
+            angle = -Vector2.Angle(Vector2.up, currentShotFaceDirection);
+			arm.eulerAngles = new Vector3(arm.eulerAngles.x, arm.eulerAngles.y, angle);
+
+            // also: flip the player to look in the pressed direction
+            if(currentShotFaceDirection.x < 0) {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 180, transform.eulerAngles.z);
+            }else{ 
+                transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+            }
         } else {
-			arm.eulerAngles = new Vector3(0, 0, angle);
+
+            // do not change arm when the direction is pressed too slightly
+			arm.eulerAngles = new Vector3(arm.eulerAngles.x, arm.eulerAngles.y, angle);
         }
     }
 
