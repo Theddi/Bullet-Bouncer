@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Spike
+  - Turret
   layers:
   - Default
   - TransparentFX

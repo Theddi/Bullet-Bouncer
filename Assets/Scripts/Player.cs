@@ -15,6 +15,7 @@ public class Player : Actor
     BulletPool bulletPool; // used for spawning bullets
     Vector2 currentShotFaceDirection = Vector2.zero; // direction the player canon faces
     float angle = 0f;
+    Transform arm;
 
     // where the last dpad movement was pointing to
     public Vector2 currentRopeFaceDirection = Vector2.zero; 
@@ -60,7 +61,8 @@ public class Player : Actor
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        bulletPool = transform.Find("bulletPool").GetComponent<BulletPool>();
+		arm = transform.Find("RotationalAxis");
+		bulletPool = transform.Find("bulletPool").GetComponent<BulletPool>();
     }
 
 
@@ -110,9 +112,9 @@ public class Player : Actor
         {
             angle = Vector2.Angle(Vector2.up, currentShotFaceDirection);
             angle *= currentShotFaceDirection.x < 0 ? 1 : -1;
-            body.transform.eulerAngles = new Vector3(0, 0, angle);
+			arm.eulerAngles = new Vector3(0, 0, angle);
         } else {
-            body.transform.eulerAngles = new Vector3(0, 0, angle);
+			arm.eulerAngles = new Vector3(0, 0, angle);
         }
     }
 
