@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     // User Interface
     public int score = 0;
     public TMP_Text scoreText;
+    public TMP_Text crystalCountText;
     public GameObject gameOverPanel;
 	readonly float scoreTickValue = 2f;
 	float scoreTicker;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
 
 	public int crystalCount = 0;
 
-	public int crystalWinAmount = 2;
+	public int crystalWinAmount = 10;
 
 	void Start()
 	{
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
 			ScoreTick();
 			scoreTicker = scoreTickValue;
 		}
+		crystalCountText.text = crystalCount+"/"+crystalWinAmount;
 		UpdateHealth(playerInstance.GetHealth());
 	}
 	public void IncreaseScore(int scoreAddition)
