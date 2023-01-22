@@ -100,9 +100,14 @@ public class Elevator : MonoBehaviour
 
             // flipp the direction if the elevator get back down
             if(change){
+
+                // set new target
                 Vector3 temp = targetPoint;
                 targetPoint = startPoint;
                 startPoint = temp;
+
+                transform.position = startPoint;
+
                 if(onlyMoveOnce){
                     if(!playerLost) active = false;
                     else { 
