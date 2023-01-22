@@ -12,33 +12,46 @@ public class Damageable : MonoBehaviour
     [SerializeField] public float cooldown = 0.5f;
 
     [SerializeField] public float flashCount = 5;
+    Color transparentMode = new Color(1f, 1f, 1f, .2f);
+    Color nonTransparenMode = new Color(1f, 1f, 1f, 1f);
 
-    private float pauseStartTime = 0;
+	private float pauseStartTime = 0;
 
     private bool paused = false;
 
     private float flashesLeft = 0;
 
-    public void Update(){
+	public void Update(){
 
         if(paused){
             float currentTime = Time.time;
 
-            SpriteRenderer renderer = gameObject.GetComponent<SpriteRenderer>();
+            SpriteRenderer[] renderer = GetComponentsInChildren<SpriteRenderer>();
 
-            if(currentTime >= pauseStartTime + cooldown){
+			if (currentTime >= pauseStartTime + cooldown){
                 // deactivate pause after cooldown has passed
                 pauseStartTime = 0;
                 paused = false;
 
-                if(renderer != null) renderer.enabled = true;
+                if (renderer != null) {
+					for (int i = 0; i < renderer.Length; i++)
+					{
+						renderer[i].color = nonTransparenMode;
+					}
+				}
                 
             }else{
                 // generate flashes
                 float timeLeft = (pauseStartTime + cooldown) - currentTime;
                 if(flashesLeft > 0 && timeLeft <= (cooldown / flashCount) * flashesLeft){
                     flashesLeft -= 1;
-                    if(renderer != null) renderer.enabled = !renderer.enabled;
+                    if (renderer != null) {
+						for (int i = 0; i < renderer.Length; i++)
+						{
+							renderer[i].color = renderer[i].color == nonTransparenMode ? transparentMode : nonTransparenMode;
+						}
+					}
+                    
                 }
 
             }

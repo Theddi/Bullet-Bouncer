@@ -11,18 +11,12 @@ public class BackgroundImageScale : MonoBehaviour
     {
 		backgroundImage = GetComponent<RectTransform>();
 		panelRect = transform.parent.GetComponent<RectTransform>();
-		backgroundImage.sizeDelta *= panelRect.sizeDelta.x / backgroundImage.sizeDelta.x;
+        
 	}
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    protected void HandleDeath()
-    {
-        gameObject.SetActive(false);
-        enabled = false;
     }
 }

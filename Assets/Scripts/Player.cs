@@ -92,8 +92,6 @@ public class Player : Actor
         // otherwise: keep the rope
         else ropes.Add(playerRope);
 
-
-
         // HandleInput();
         if(Time.timeScale > 0)
         {
@@ -129,8 +127,7 @@ public class Player : Actor
 
 	protected void HandleDeath()
     {
-        Time.timeScale = 0f;
-        manager.GameOver();
+		manager.GameOver();
     }
 
     public float GetHealth(){

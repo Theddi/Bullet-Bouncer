@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SceneFader : MonoBehaviour
 {
+    public string scene;
+    public Color color;
+    public float transitionSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +18,7 @@ public class SceneFader : MonoBehaviour
     {
         if (Input.anyKey)
         {
-			Initiate.Fade("CreditScene", Color.black, .5f);
+			Initiate.Fade(scene, color, transitionSpeed);
 		}
     }
 }
