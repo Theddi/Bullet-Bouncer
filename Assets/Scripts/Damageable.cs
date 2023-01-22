@@ -15,6 +15,7 @@ public class Damageable : MonoBehaviour
     Color transparentMode = new Color(1f, 1f, 1f, .2f);
     Color nonTransparenMode = new Color(1f, 1f, 1f, 1f);
 
+    public AudioSource damageTaken;
 	private float pauseStartTime = 0;
 
     private bool paused = false;
@@ -66,13 +67,12 @@ public class Damageable : MonoBehaviour
             {
                 HandleDeath();
 		    }
-
-            pauseStartTime = Time.time;
+            if (damageTaken != null)
+                damageTaken.PlayOneShot(damageTaken.clip, damageTaken.volume);
+			pauseStartTime = Time.time;
             paused = true;
             flashesLeft = flashCount;
         }
-
-        
     }
 
     public float DealDamage()

@@ -31,8 +31,9 @@ public class GameManager : MonoBehaviour
 	float healthbarMaxY;
 	float boundingDistance = 5;
 
+	public AudioSource playerAudio;
+	public AudioClip crystalCollectClip;
 	public int crystalCount = 0;
-
 	public int crystalWinAmount = 10;
 
 	void Start()
@@ -99,8 +100,8 @@ public class GameManager : MonoBehaviour
 	public void IncreaseCrystalCount(int amount){
 		if(amount < 0) Debug.LogWarning("Decreasing Crystal count by " + amount);
 		crystalCount += amount;
-
-		if(crystalCount >= crystalWinAmount) Win();
+		playerAudio.PlayOneShot(crystalCollectClip);
+		if (crystalCount >= crystalWinAmount) Win();
 	}
 
 	public void Win(){

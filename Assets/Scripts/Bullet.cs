@@ -16,7 +16,12 @@ public class Bullet : MonoBehaviour
     [SerializeField] int bounces = 0;
     Vector2 lastVelocity;
 
-    public void OnEnable()
+    public AudioSource audioSource;
+    public AudioClip audioClip;
+    public float volumeScale;
+
+
+	public void OnEnable()
     {
 		bulletBody = GetComponent<Rigidbody2D>();
         if (owner != null ) {
@@ -94,8 +99,10 @@ public class Bullet : MonoBehaviour
 				bulletBody.velocity = bulletBody.transform.right * bulletSpeed;
 			}
         }
-            
-    }
+        if (audioSource != null)
+			audioSource.PlayOneShot(audioClip, volumeScale);
+
+	}
 
     public void setMaximumBounces(int max)
     {
