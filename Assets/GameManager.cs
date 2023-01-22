@@ -24,34 +24,34 @@ public class GameManager : MonoBehaviour
 	//Health Points
 	public GameObject healthUI;
 	public GameObject healthPointImage;
-	public float betweenImageDistance = 20f;
-	float numberOfImages = 0f;
-	float healthFrameDistanceDenominator = 50;
+	float health = 0f;
+	float healthMax = 0f;
+	float healthbarMaxX;
+	float healthbarMaxY;
+	float boundingDistance = 5;
 
 	void Start()
 	{
-		numberOfImages = playerInstance.GetHealth(); // Number of elements as of player health points
-		float healthPointImageWidth = healthPointImage.GetComponent<RectTransform>().sizeDelta.x;
+		health = playerInstance.GetHealth(); // Number of elements as of player health points
+		healthMax = playerInstance.GetHealth();
 
-		GameObject healthContainer = Instantiate(healthUI, statsPanel.transform);
-		healthContainer.GetComponent<RectTransform>().sizeDelta = new Vector2(healthPointImageWidth * numberOfImages + 50f, statsPanel.GetComponent<RectTransform>().sizeDelta.y);
-		healthContainer.GetComponent<RectTransform>().anchoredPosition = new Vector2(healthContainer.GetComponent<RectTransform>().sizeDelta.x / 2, healthContainer.GetComponent<RectTransform>().sizeDelta.y / 2);
+		healthbarMaxX = ((statsPanel.GetComponent<RectTransform>().sizeDelta.x - 2 * boundingDistance));
+		healthbarMaxY = ((statsPanel.GetComponent<RectTransform>().sizeDelta.y - 2 * boundingDistance));
 
-		float boundingDistance = healthUI.GetComponent<RectTransform>().sizeDelta.x / healthFrameDistanceDenominator; // Distance from frame
+		//Healthbar maximum visualization
+		GameObject healthBarMaxImage = Instantiate(healthPointImage, statsPanel.transform);
+		healthBarMaxImage.GetComponent<UnityEngine.UI.Image>().color = Color.gray;
+		RectTransform healthBarMaxImageTransform = healthBarMaxImage.GetComponent<RectTransform>();
+		healthBarMaxImageTransform.sizeDelta = new Vector2(healthbarMaxX, healthbarMaxY);
+		healthBarMaxImage.name = "HealthBarMax";
 
-		float startingDistance = healthPointImageWidth / 2 + boundingDistance;
-		float imagePositioningDistance = ((healthContainer.GetComponent<RectTransform>().sizeDelta.x - 2 * boundingDistance) / numberOfImages);
-		if (imagePositioningDistance > healthPointImageWidth + betweenImageDistance)
-			imagePositioningDistance = healthPointImageWidth + betweenImageDistance;
-		
-		// Create the images and position them in the panel
-		for (int i = 0; i < numberOfImages; i++)
-		{
-			GameObject image = Instantiate(healthPointImage, healthContainer.transform);
-			image.name = "HealthPoint" + i;
-			RectTransform imageRectTransform = image.GetComponent<RectTransform>();
-			imageRectTransform.anchoredPosition = new Vector2(startingDistance + i * imagePositioningDistance, 0);
-		}
+		//Current Healthbar visualization
+		GameObject healthBarImage = Instantiate(healthPointImage, statsPanel.transform);
+		RectTransform healthBarImageTransform = healthBarImage.GetComponent<RectTransform>();
+		healthBarImageTransform.sizeDelta = new Vector2(healthbarMaxX, healthbarMaxY);
+		healthBarImage.name = "HealthBar";
+
+		UpdateHealth(health);
 	}
 
 	public void Update()
@@ -59,11 +59,10 @@ public class GameManager : MonoBehaviour
 		scoreTicker -= Time.deltaTime;
 		if (scoreTicker < 0)
 		{
-			scoreTick();
+			ScoreTick();
 			scoreTicker = scoreTickValue;
 		}
-		if (numberOfImages > playerInstance.GetHealth())
-			DecreaseHealth(playerInstance.GetHealth());
+		UpdateHealth(playerInstance.GetHealth());
 	}
 	public void IncreaseScore(int scoreAddition)
     { 
@@ -71,14 +70,13 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-	public void DecreaseHealth(float health)
+	public void UpdateHealth(float health)
 	{
-		GameObject inactiveHealth = GameObject.Find("HealthPoint" + (int)health);
-		inactiveHealth.SetActive(false);
-		numberOfImages = health;
+		RectTransform healthBar = GameObject.Find("HealthBar").GetComponent<RectTransform>();
+		healthBar.sizeDelta = new Vector2(healthbarMaxX * (health/healthMax), healthbarMaxY);
 	}
 
-	void scoreTick()
+	void ScoreTick()
 	{
 		score -= 1;
 		scoreText.text = score.ToString();
