@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class Player : Actor
 {
-	GameManager manager;
+	GameManager manager_player;
 
 	PlayerControls controls;
     PlayerInput input;
@@ -30,12 +30,12 @@ public class Player : Actor
     
     void Awake()
     {
-		manager = FindObjectOfType<GameManager>();
+		manager_player = FindObjectOfType<GameManager>();
 		controls = new PlayerControls();
         input = GetComponent<PlayerInput>();
 
 		//Menu
-		controls.Gameplay.Menu.performed += ctx => manager.TriggerPause();
+		controls.Gameplay.Menu.performed += ctx => manager_player.TriggerPause();
 
 		// Rope & Movement
 		controls.Gameplay.RopeShoot.performed += ctx => ShootRope();
@@ -133,7 +133,7 @@ public class Player : Actor
 
 	protected void HandleDeath()
     {
-		manager.GameOver();
+		manager_player.GameOver();
     }
 
     public float GetHealth(){

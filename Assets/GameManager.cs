@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
 	}
 	public void Quit()
 	{
-		Initiate.Fade("MainScreen", Color.black, .5f);
+		Application.Quit();
 	}
 
 	public void Win(){
