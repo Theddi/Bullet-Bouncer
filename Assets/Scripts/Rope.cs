@@ -90,27 +90,15 @@ public class Rope : MonoBehaviour
 
         if(userBody.velocity == Vector2.zero) return;
 
-
         Vector2 direction2D = - new Vector2(direction.x, direction.y);
-        direction2D.Normalize();
-        Vector2[]  vectorBasis = {new Vector2(direction2D.x, direction2D.y), 
-                                    new Vector2(direction2D.y, -direction2D.x)};
 
-        if(S_Math.det(vectorBasis) == 0){
-            Debug.LogWarning("Could not inverse direction matrix because of determinant == 0");
-            return;
-        }
-
-        vectorBasis = S_Math.inverse(vectorBasis);
-
-        Vector2 transformedVelocity = S_Math.mult(vectorBasis, userBody.velocity);
-        float momontumShare = transformedVelocity[0]/transformedVelocity.magnitude;
+        float momentumShare = S_Math.calculateShare(direction2D, userBody.velocity);
 
         // in case the player is not moving against the rope
-        if(momontumShare <= 0) return;
+        if(momentumShare <= 0) return;
 
-        Vector2 momontumAgainstRopeDirection = userBody.velocity * momontumShare;
-        Vector2 otherMomontum = userBody.velocity * (1-momontumShare);
+        Vector2 momontumAgainstRopeDirection = userBody.velocity * momentumShare;
+        Vector2 otherMomontum = userBody.velocity * (1-momentumShare);
 
         userBody.velocity = (momontumAgainstRopeDirection * (1- momentumDecreaseRate) + otherMomontum) * (1-Time.deltaTime);
         
