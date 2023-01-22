@@ -30,6 +30,10 @@ public class GameManager : MonoBehaviour
 	float healthbarMaxY;
 	float boundingDistance = 5;
 
+	public int crystalCount = 0;
+
+	public int crystalWinAmount = 2;
+
 	void Start()
 	{
 		health = playerInstance.GetHealth(); // Number of elements as of player health points
@@ -85,5 +89,16 @@ public class GameManager : MonoBehaviour
 	public void GameOver()
 	{
 		gameOverPanel.SetActive(true);
+	}
+
+	public void IncreaseCrystalCount(int amount){
+		if(amount < 0) Debug.LogWarning("Decreasing Crystal count by " + amount);
+		crystalCount += amount;
+
+		if(crystalCount >= crystalWinAmount) Win();
+	}
+
+	public void Win(){
+		Initiate.Fade("CreditScene", Color.black, .5f);
 	}
 }

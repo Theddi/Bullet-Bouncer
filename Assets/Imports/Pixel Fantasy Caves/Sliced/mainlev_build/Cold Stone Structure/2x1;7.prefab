@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3381902992751369017}
   - component: {fileID: -7618525975945575445}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x1;7
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_278
       objectReference: {fileID: 0}
+    - target: {fileID: 2663661219716135402, guid: 94516b857d9e5e44cbf4eecc8310e466, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2679778458632014264, guid: 94516b857d9e5e44cbf4eecc8310e466, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -115,6 +119,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4802352971063960962, guid: 94516b857d9e5e44cbf4eecc8310e466, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94516b857d9e5e44cbf4eecc8310e466, type: 3}
 --- !u!4 &2548587716636103895 stripped
@@ -173,9 +181,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4110003794232549784, guid: 91bb6f89edd0d5e4f830ebe540634e2e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 6722711983972931008, guid: 91bb6f89edd0d5e4f830ebe540634e2e, type: 3}
       propertyPath: m_Name
       value: mainlev_build_277
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722711983972931008, guid: 91bb6f89edd0d5e4f830ebe540634e2e, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91bb6f89edd0d5e4f830ebe540634e2e, type: 3}

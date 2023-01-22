@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5858516130671165777}
   - component: {fileID: 1502560224350692129}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x1
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,6 +72,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5858516130671165777}
     m_Modifications:
+    - target: {fileID: 371780949589728790, guid: 3dee9a99e7c92ae4f9c65522103d7b0b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 1671684727111576227, guid: 3dee9a99e7c92ae4f9c65522103d7b0b, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -120,6 +124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_96
       objectReference: {fileID: 0}
+    - target: {fileID: 8777636131101262030, guid: 3dee9a99e7c92ae4f9c65522103d7b0b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dee9a99e7c92ae4f9c65522103d7b0b, type: 3}
 --- !u!4 &4577953851229365444 stripped
@@ -138,6 +146,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_127
       objectReference: {fileID: 0}
+    - target: {fileID: 1274925776279277347, guid: 717e2445545a06743aa9cb7a535be8bb, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789654726761868227, guid: 717e2445545a06743aa9cb7a535be8bb, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 8302500441291039127, guid: 717e2445545a06743aa9cb7a535be8bb, type: 3}
       propertyPath: m_RootOrder
       value: 1

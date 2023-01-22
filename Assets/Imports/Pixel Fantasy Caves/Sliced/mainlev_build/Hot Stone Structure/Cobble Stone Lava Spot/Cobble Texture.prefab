@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8603581419302504137}
   - component: {fileID: 991980128103351771}
+  - component: {fileID: 551352699437071470}
   m_Layer: 0
   m_Name: Cobble Texture
   m_TagString: Untagged
@@ -62,6 +63,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!210 &551352699437071470
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4293944845431615249}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1001 &3798886978581138619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +146,14 @@ PrefabInstance:
     - target: {fileID: 2839259876776119250, guid: fe1e6f60dc1fd784898721913773a81f, type: 3}
       propertyPath: m_Name
       value: mainlev_build_830
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581411867171990241, guid: fe1e6f60dc1fd784898721913773a81f, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581411867171990241, guid: fe1e6f60dc1fd784898721913773a81f, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -958215171
       objectReference: {fileID: 0}
     - target: {fileID: 7939885711217771671, guid: fe1e6f60dc1fd784898721913773a81f, type: 3}
       propertyPath: m_RootOrder

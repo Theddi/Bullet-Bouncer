@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 975656193276803957}
   - component: {fileID: 2672642114350373548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1x2;8
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,9 +67,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 975656193276803957}
     m_Modifications:
+    - target: {fileID: 2869361845584891880, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 4697420989080040667, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
       propertyPath: m_Name
       value: mainlev_build_396
+      objectReference: {fileID: 0}
+    - target: {fileID: 4697420989080040667, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7016711669679854113, guid: f077c246b03fd2148a8268786529fbbc, type: 3}
       propertyPath: m_RootOrder
@@ -177,6 +185,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_422
       objectReference: {fileID: 0}
+    - target: {fileID: 5622347984514092966, guid: 2025462b6f18c2c4685ee82ca22103ac, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071875832285266596, guid: 2025462b6f18c2c4685ee82ca22103ac, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2025462b6f18c2c4685ee82ca22103ac, type: 3}
 --- !u!4 &7386163978532798148 stripped

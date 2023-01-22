@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1701238571852394470}
   - component: {fileID: 120247724307516545}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x1left3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,6 +71,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_70
       objectReference: {fileID: 0}
+    - target: {fileID: 104974812555099705, guid: 8a4173e32d728504080bb2e43052e78c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720521641837691667, guid: 8a4173e32d728504080bb2e43052e78c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 5001606105743289143, guid: 8a4173e32d728504080bb2e43052e78c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -133,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_69
       objectReference: {fileID: 0}
+    - target: {fileID: 4437382942891640203, guid: 4476986cefa94024896ae15339e8c353, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5825754686345587948, guid: 4476986cefa94024896ae15339e8c353, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -177,6 +189,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9205154077233600509, guid: 4476986cefa94024896ae15339e8c353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4476986cefa94024896ae15339e8c353, type: 3}
 --- !u!4 &8828078166709321848 stripped

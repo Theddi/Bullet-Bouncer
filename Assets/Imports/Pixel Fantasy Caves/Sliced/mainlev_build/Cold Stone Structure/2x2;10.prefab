@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5671763758941572590}
   - component: {fileID: 1392839316250562826}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x2;10
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -117,6 +117,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainlev_build_389
       objectReference: {fileID: 0}
+    - target: {fileID: 5446325807242815690, guid: 05de36df8714f964bb6684feea6f329c, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8587138775683126639, guid: 05de36df8714f964bb6684feea6f329c, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05de36df8714f964bb6684feea6f329c, type: 3}
 --- !u!4 &4077755910995554580 stripped
@@ -134,6 +142,10 @@ PrefabInstance:
     - target: {fileID: 740630298375877293, guid: 5bcd9cf9a6498db49847b0eabbecb5a5, type: 3}
       propertyPath: m_Name
       value: mainlev_build_390
+      objectReference: {fileID: 0}
+    - target: {fileID: 740630298375877293, guid: 5bcd9cf9a6498db49847b0eabbecb5a5, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4555403338059617468, guid: 5bcd9cf9a6498db49847b0eabbecb5a5, type: 3}
       propertyPath: m_RootOrder
@@ -179,6 +191,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9088888346320151096, guid: 5bcd9cf9a6498db49847b0eabbecb5a5, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5bcd9cf9a6498db49847b0eabbecb5a5, type: 3}
 --- !u!4 &2672586090814538946 stripped
@@ -196,6 +212,10 @@ PrefabInstance:
     - target: {fileID: 137132471445403224, guid: bccebf3052fc69e408ec761a6ab9d9bc, type: 3}
       propertyPath: m_Name
       value: mainlev_build_415
+      objectReference: {fileID: 0}
+    - target: {fileID: 137132471445403224, guid: bccebf3052fc69e408ec761a6ab9d9bc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4977386071773299203, guid: bccebf3052fc69e408ec761a6ab9d9bc, type: 3}
       propertyPath: m_RootOrder
@@ -241,6 +261,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8526175815455439199, guid: bccebf3052fc69e408ec761a6ab9d9bc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bccebf3052fc69e408ec761a6ab9d9bc, type: 3}
 --- !u!4 &8403319276176237431 stripped
@@ -258,6 +282,10 @@ PrefabInstance:
     - target: {fileID: 2336679527659571091, guid: c4a5c88699b26be4a88e2cce539a8921, type: 3}
       propertyPath: m_Name
       value: mainlev_build_416
+      objectReference: {fileID: 0}
+    - target: {fileID: 2336679527659571091, guid: c4a5c88699b26be4a88e2cce539a8921, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4562252924878541085, guid: c4a5c88699b26be4a88e2cce539a8921, type: 3}
       propertyPath: m_RootOrder
@@ -303,6 +331,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5626100244276102419, guid: c4a5c88699b26be4a88e2cce539a8921, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4a5c88699b26be4a88e2cce539a8921, type: 3}
 --- !u!4 &8833284045433991535 stripped

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4733809925999568756}
   - component: {fileID: 9001452554121294661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2x1left2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,9 +67,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4733809925999568756}
     m_Modifications:
+    - target: {fileID: 2819934746144899588, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 3086986070992045712, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
       propertyPath: m_Name
       value: mainlev_build_65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3086986070992045712, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6744396985552155819, guid: 1223b5fe0dd031f4db26b835118827cc, type: 3}
       propertyPath: m_RootOrder
@@ -129,6 +137,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4733809925999568756}
     m_Modifications:
+    - target: {fileID: 351985709813911718, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: efde3ed2ba49ee04ba280babfcebcab0, type: 2}
     - target: {fileID: 1931018489577385015, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -176,6 +188,10 @@ PrefabInstance:
     - target: {fileID: 4570525628121597977, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
       propertyPath: m_Name
       value: mainlev_build_66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570525628121597977, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cb103da57d5d814287cb6932f4274f7, type: 3}
