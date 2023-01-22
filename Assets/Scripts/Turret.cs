@@ -13,6 +13,7 @@ public class Turret : Actor
 	Vector2 direction = Vector2.zero;
     float targetRange = 1000f;
     float motionDegree = 250f;
+	bool facingLeft = false;
 
 	// Start is called before the first frame update
 	void Start()
@@ -25,6 +26,7 @@ public class Turret : Actor
 		shoot = transform.Find("bulletPool").GetComponent<BulletPool>();
         GetComponent<Damageable>().changeDeathFuntion(HandleDeath);
 		Physics2D.IgnoreCollision(GetComponent<Collider2D>(), cannon.GetComponent<Collider2D>());
+		facingLeft = !IsLeft(cannonFaceDirection);
 	}
 
     // Update is called once per frame
@@ -38,12 +40,19 @@ public class Turret : Actor
         } else {// don't shoot when out of range
 			shoot.shootingActive = false;
 		}
+
+		
     }
 
-    protected override void HandleMovement()
-    {
+    protected override void HandleMovement(){}
 
-    }
+	protected bool IsLeft(Vector3 direction){
+		Quaternion newRotation = Quaternion.FromToRotation(cannonFaceDirection, direction);
+		float faceDegree = GetFaceDegree(cannonFaceDirection);
+        Quaternion checkRotation = newRotation;
+        checkRotation.eulerAngles = checkRotation.eulerAngles + new Vector3(0, 0, motionDegree/2 - faceDegree);
+		return checkRotation.eulerAngles.z >= motionDegree/2;
+	}
 
     protected override void HandleRotation()
     {
@@ -56,22 +65,16 @@ public class Turret : Actor
 		{// Rotate if within motion degree, and enable shooting
 			rotationalAxis.rotation = newRotation;
 			
-			//Debug.Log("Check: "+checkRotation.eulerAngles);
-			Debug.Log("Cannon: " + cannon.rotation);
-			if (checkRotation.eulerAngles.z < motionDegree/2)
+			if (IsLeft(direction))
             {// Flip image to right sight
-                if(cannon != null)
-				{
-					//cannon.eulerAngles = new Vector3(0, cannon.eulerAngles.y, cannon.eulerAngles.z);
-				} else { Debug.Log("null"); }
-					
-			} else
+				if(facingLeft && cannon != null) cannon.Rotate(180,0,0);
+				facingLeft = false;
+               					
+			} else 
 			{// Flip image to left sight
-				if (cannon != null)
-				{
-					//cannon.eulerAngles = new Vector3(180, cannon.eulerAngles.y, cannon.eulerAngles.z);
-				} else { Debug.Log("null"); }
-		}
+				if(!facingLeft && cannon != null) cannon.Rotate(180,0,0);
+				facingLeft = true;
+			}
 			shoot.shootingActive = true;
 		} else {// don't shoot when at too high angle
 			shoot.shootingActive = false;
