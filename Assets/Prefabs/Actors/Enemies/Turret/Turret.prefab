@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750ad21c7b499354eb2c905000eb966b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   baseDamage: 1
   damageMulti: 1
   damageReduct: 1
@@ -567,6 +567,10 @@ PrefabInstance:
       propertyPath: origin
       value: 
       objectReference: {fileID: 3839369512245332887}
+    - target: {fileID: -3326316874567478205, guid: eaf8adc2f56ebe146986bfc910737bf3, type: 3}
+      propertyPath: cooldown
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1993949038025893186, guid: eaf8adc2f56ebe146986bfc910737bf3, type: 3}
       propertyPath: m_Name
       value: bulletPool
