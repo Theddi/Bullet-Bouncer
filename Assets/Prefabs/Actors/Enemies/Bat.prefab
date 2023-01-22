@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  baseDamage: 1
+  baseDamage: 0.5
   damageMulti: 1
   damageReduct: 1
   cooldown: 0.3
@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 015cad0d18167cd4f9b233c917ef902c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageAmount: 1
   repulsionSpeed: 1
 --- !u!114 &2389382788067485685
 MonoBehaviour:
