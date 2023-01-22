@@ -40,8 +40,6 @@ public class Turret : Actor
         } else {// don't shoot when out of range
 			shoot.shootingActive = false;
 		}
-
-		
     }
 
     protected override void HandleMovement(){}

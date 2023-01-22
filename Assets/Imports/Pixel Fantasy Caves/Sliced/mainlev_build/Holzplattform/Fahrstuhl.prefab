@@ -50,7 +50,7 @@ SortingGroup:
   m_GameObject: {fileID: 4699983693571653654}
   m_Enabled: 1
   m_SortingLayerID: 1212007853
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
 --- !u!1001 &53860534796889783
 PrefabInstance:

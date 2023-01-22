@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 655427476}
   - component: {fileID: 655427475}
   - component: {fileID: 655427478}
+  - component: {fileID: 655427479}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -220,6 +221,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8403c5141e74f004ea984fa9e8652fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene: World
+  color: {r: 0, g: 0, b: 0, a: 1}
+  transitionSpeed: 0.5
+--- !u!114 &655427479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655427474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &1162502561
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,8 +333,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -309,15 +354,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1486.245
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 813.5651
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2099259398320882162, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_LocalScale.x
@@ -343,6 +388,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e9152a63df2695d4397dd3f65baa5ad3, type: 3}
+    - target: {fileID: 2099259398320882163, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2099259398471259202, guid: 7540b8c6dc376944e97c7b89d090a06b, type: 3}
       propertyPath: m_Pivot.x
       value: 0

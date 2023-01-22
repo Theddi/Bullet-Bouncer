@@ -65,6 +65,9 @@ TagManager:
   - name: Spikes
     uniqueID: 490809331
     locked: 0
+  - name: DarkWall
+    uniqueID: 4078756321
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
