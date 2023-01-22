@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,8 @@ public class Rope : MonoBehaviour
 
     public Vector3 hookPoint = Vector3.zero;
 
+    public float momentumDecreaseRate = 0.01f;
+
     public float errorTolerance = 2;
 
     // Update is called once per frame
@@ -52,6 +55,8 @@ public class Rope : MonoBehaviour
 
         if(!isHooked) Extend(extentionSpeed);
         else {
+            SlowMomentum();
+
             Approach(hookPoint, accelarationSpeed);
 
             // reset position and rotation
@@ -79,6 +84,36 @@ public class Rope : MonoBehaviour
         
         // reenable disable collision for transformation phase
         GetComponent<Collider2D>().enabled = true;
+    }
+
+    void SlowMomentum(){
+
+        if(userBody.velocity == Vector2.zero) return;
+
+
+        Vector2 direction2D = - new Vector2(direction.x, direction.y);
+        direction2D.Normalize();
+        Vector2[]  vectorBasis = {new Vector2(direction2D.x, direction2D.y), 
+                                    new Vector2(direction2D.y, -direction2D.x)};
+
+        if(S_Math.det(vectorBasis) == 0){
+            Debug.LogWarning("Could not inverse direction matrix because of determinant == 0");
+            return;
+        }
+
+        vectorBasis = S_Math.inverse(vectorBasis);
+
+        Vector2 transformedVelocity = S_Math.mult(vectorBasis, userBody.velocity);
+        float momontumShare = transformedVelocity[0]/transformedVelocity.magnitude;
+
+        // in case the player is not moving against the rope
+        if(momontumShare <= 0) return;
+
+        Vector2 momontumAgainstRopeDirection = userBody.velocity * momontumShare;
+        Vector2 otherMomontum = userBody.velocity * (1-momontumShare);
+
+        userBody.velocity = (momontumAgainstRopeDirection * (1- momentumDecreaseRate) + otherMomontum) * (1-Time.deltaTime);
+        
     }
 
     public void Offset()
