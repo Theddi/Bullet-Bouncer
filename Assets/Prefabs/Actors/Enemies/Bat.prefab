@@ -155,6 +155,7 @@ MonoBehaviour:
   damageReduct: 1
   cooldown: 0.3
   flashCount: 5
+  damageTaken: {fileID: 0}
 --- !u!114 &900654777038352335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,7 +250,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 782230c7f49c019479c137d86fb65964, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
   Mute: 1
