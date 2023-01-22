@@ -304,6 +304,7 @@ MonoBehaviour:
   moveDirection: {x: 0, y: 0}
   rotation: {x: 0, y: 0}
   speed: 0
+  targetRange: 20
 --- !u!114 &1566008610265112184
 MonoBehaviour:
   m_ObjectHideFlags: 0

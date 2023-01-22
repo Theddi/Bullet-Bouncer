@@ -126,7 +126,7 @@ public class Elevator : MonoBehaviour
             elevatorPos.Set(elevatorPos.x, elevatorPos.y + collider.bounds.size.y + playerCollider.bounds.size.y/2);
 
             Vector3 pushDirection = elevatorPos - new Vector2(player.transform.position.x, player.transform.position.y);
-            Vector2 pushDirection2D = new Vector2(pushDirection.x, pushDirection.y);
+            Vector2 pushDirection2D = new Vector2(pushDirection.x, 0);
 
             playerBody.velocity = pushDirection2D * assistanceSpeed * Time.deltaTime;
         }

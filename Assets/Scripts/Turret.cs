@@ -11,7 +11,7 @@ public class Turret : Actor
 	Vector3 cannonFaceDirection = Vector3.right;
 	BulletPool shoot;
 	Vector2 direction = Vector2.zero;
-    float targetRange = 1000f;
+    [SerializeField] float targetRange = 20f;
     float motionDegree = 250f;
 	bool facingLeft = false;
 
@@ -34,7 +34,7 @@ public class Turret : Actor
     {
 		direction = target.transform.position - rotationalAxis.position;
         
-        if (direction.sqrMagnitude < targetRange)
+        if (direction.magnitude < targetRange && PlayerApproacher.PlayerInSight(transform, targetRange))
         {
             HandleRotation();
         } else {// don't shoot when out of range
